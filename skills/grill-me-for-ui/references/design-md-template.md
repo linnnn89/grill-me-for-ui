@@ -1,8 +1,8 @@
 # Optional DESIGN.md Handoff
 
-本模板用于多页面、设计系统、重设计或预计跨 Agent / 跨会话迭代的项目。它参考 Google Labs `DESIGN.md` alpha 思路：YAML Token 提供准确值，Markdown 说明艺术指导、使用边界和视觉系统关系。
+本模板用于多页面、设计系统、World Replacement、持续扩展或跨 Agent / 跨会话项目。YAML Token 提供准确值，Markdown 解释 Art Direction、来源、使用边界、组件行为和迭代规则。
 
-单个低风险页面或组件默认只输出 UI Brief 与 Art Direction Card，不额外制造文档。
+单个低风险页面、T3 微调或一次性概念稿默认只输出 UI Brief 与 Art Direction Card。
 
 ## 生成条件
 
@@ -12,396 +12,447 @@
 - 后续由不同 Agent 或开发者实施；
 - 项目已有或准备建立 Design Tokens；
 - 用户明确要求持久设计规范；
-- 重设计需要记录旧系统到新系统的迁移基线；
-- 项目依赖明确的摄影、插画、数据图形或动效系统。
+- World Replacement 需要记录迁移基线；
+- 后续预计持续新增 T1 / T2 / T3 迭代。
 
-生成前必须已确认：
+生成前必须确认：
 
+- 主表面模式；
+- 选定方向胶囊；
 - Art Direction Card；
-- 主导概念和支持母题；
-- 构图语法；
+- 设计系统策略；
 - 主要 Token 方向；
 - 核心组件状态；
-- 明确避免项；
-- 内容与素材边界。
+- 明确避免项和内容真实性边界。
 
 ## 模板
 
 ````markdown
 ---
-version: alpha
-name: [Design system name]
-description: [One-sentence purpose and visual thesis]
+version: "0.3"
+name: "[Design system name]"
+status: draft | locked | evolving
+surfaceMode: persuade | operate | read | experience
+projectScenario: greenfield | world-replacement | extension | refinement
+selectedDirection: "[Direction capsule name]"
+expression: [1-10]
+motion: [1-10]
+density: [1-10]
+systemStrategy: existing | official | curated-scaffold | custom
+sourceOfTruth:
+  productBrief: "[path or TBD]"
+  uiBrief: "[path or TBD]"
+  visualAnchors: "[path or TBD]"
+  currentImplementation: "[path or TBD]"
 colors:
-  atmosphere-background: "[CSS color]"
-  atmosphere-surface: "[CSS color]"
-  atmosphere-surface-muted: "[CSS color]"
-  text-primary: "[CSS color]"
-  text-secondary: "[CSS color]"
-  border-subtle: "[CSS color]"
-  action-primary: "[CSS color]"
-  on-action-primary: "[CSS color]"
-  action-secondary: "[CSS color or TBD]"
+  atmosphereBackground: "[CSS color]"
+  atmosphereSurface: "[CSS color]"
+  atmosphereMuted: "[CSS color]"
+  textPrimary: "[CSS color]"
+  textSecondary: "[CSS color]"
+  border: "[CSS color]"
+  actionPrimary: "[CSS color]"
+  onActionPrimary: "[CSS color]"
+  actionSecondary: "[CSS color or transparent]"
   success: "[CSS color]"
   warning: "[CSS color]"
   error: "[CSS color]"
   info: "[CSS color]"
 typography:
-  display-lg:
+  display:
     fontFamily: "[Font family]"
-    fontSize: "[dimension]"
+    fontSize: "[dimension or clamp]"
     fontWeight: [number]
-    lineHeight: [number or dimension]
+    lineHeight: "[number or dimension]"
     letterSpacing: "[dimension]"
-  heading-md:
+  heading:
     fontFamily: "[Font family]"
     fontSize: "[dimension]"
     fontWeight: [number]
-    lineHeight: [number or dimension]
-  body-md:
+    lineHeight: "[number or dimension]"
+  body:
     fontFamily: "[Font family]"
     fontSize: "[dimension]"
     fontWeight: [number]
-    lineHeight: [number or dimension]
-  label-sm:
+    lineHeight: "[number or dimension]"
+    maxWidth: "[ch or dimension]"
+  label:
     fontFamily: "[Font family]"
     fontSize: "[dimension]"
     fontWeight: [number]
-    lineHeight: [number or dimension]
-  mono-md:
+    lineHeight: "[number or dimension]"
+  data:
     fontFamily: "[Font family]"
     fontSize: "[dimension]"
     fontWeight: [number]
-    lineHeight: [number or dimension]
-shape:
-  radius-sm: "[dimension]"
-  radius-md: "[dimension]"
-  radius-lg: "[dimension]"
-  radius-full: "9999px"
+    lineHeight: "[number or dimension]"
 spacing:
   xs: "[dimension]"
   sm: "[dimension]"
   md: "[dimension]"
   lg: "[dimension]"
   xl: "[dimension]"
-  section-sm: "[dimension]"
-  section-lg: "[dimension]"
-layout:
-  container-max: "[dimension]"
-  grid-columns: [number]
-  grid-gutter: "[dimension]"
-  reading-width: "[dimension]"
-motion:
+  section: "[dimension or clamp]"
+shape:
+  control: "[dimension]"
+  surface: "[dimension]"
+  overlay: "[dimension]"
+  pill: "9999px"
+depth:
+  surface: "[border / shadow / tonal rule]"
+  raised: "[shadow or token]"
+  overlay: "[shadow or token]"
+motionTokens:
   instant: "[duration]"
+  quick: "[duration]"
   standard: "[duration]"
-  narrative: "[duration]"
-  easing-standard: "[CSS easing]"
-  easing-emphasized: "[CSS easing]"
+  slow: "[duration]"
+  easingStandard: "[easing]"
+  easingEnter: "[easing]"
+  easingExit: "[easing]"
+icons:
+  family: "[Icon family]"
+  strokeWidth: "[value]"
+  defaultSize: "[dimension]"
+  fillPolicy: "outline | filled | mixed-by-rule"
+breakpoints:
+  mobile: "[dimension]"
+  tablet: "[dimension]"
+  desktop: "[dimension]"
+  wide: "[dimension]"
 components:
-  button-primary:
-    backgroundColor: "{colors.action-primary}"
-    textColor: "{colors.on-action-primary}"
-    typography: "{typography.label-sm}"
-    rounded: "{shape.radius-md}"
+  buttonPrimary:
+    background: "{colors.actionPrimary}"
+    text: "{colors.onActionPrimary}"
+    typography: "{typography.label}"
+    radius: "{shape.control}"
     padding: "[dimension]"
-  input-default:
-    backgroundColor: "{colors.atmosphere-surface}"
-    textColor: "{colors.text-primary}"
-    rounded: "{shape.radius-md}"
+  inputDefault:
+    background: "{colors.atmosphereSurface}"
+    text: "{colors.textPrimary}"
+    border: "{colors.border}"
+    radius: "{shape.control}"
     padding: "[dimension]"
-  card-default:
-    backgroundColor: "{colors.atmosphere-surface}"
-    textColor: "{colors.text-primary}"
-    rounded: "{shape.radius-lg}"
-    padding: "[dimension]"
+  surfaceDefault:
+    background: "{colors.atmosphereSurface}"
+    text: "{colors.textPrimary}"
+    radius: "{shape.surface}"
+    depth: "{depth.surface}"
 ---
 
 # [Design system name]
 
-## 1. Art Direction Card
+## 0. Contract Status
 
-- **Surface type:** [product / dashboard / landing / editorial / portfolio / mobile / system]
-- **Audience and task:**
-- **Three character words:**
-- **Anti-word:**
-- **Visual thesis:**
-- **Primary tension:**
-- **Primary expressive medium:**
-- **EXPRESSION:** [1–10 + rationale]
-- **MOTION:** [1–10 + rationale]
-- **DENSITY:** [1–10 + rationale]
-- **Main design risk:**
+- **Status:** Draft / Locked / Evolving
+- **Last reviewed:**
+- **Owner:**
+- **Applies to:**
+- **Does not apply to:**
+- **Current implementation evidence:**
 
-Describe the intended emotional response and what must remain visually subordinate.
+说明哪些章节已经由用户确认，哪些来自项目证据、公开参考、专业推断或暂定默认。
 
-## 2. Dominant Concept & Motifs
+## 1. Product Truth
 
-- **Dominant concept:**
-- **Why it fits the product and audience:**
-- **How it is perceived in five seconds:**
-- **Supporting motif 1:**
-- **Supporting motif 2:**
-- **Elements that must stay quiet:**
-- **Mobile translation:**
-- **Brand fingerprint without logo:**
+- **产品 / 服务：**
+- **主要用户：**
+- **核心任务：**
+- **表面模式：** Persuade / Operate / Read / Experience
+- **成功结果：**
+- **任务频率：**
+- **错误代价与信任要求：**
+- **真实内容和资产：**
+- **禁止编造：**
 
-Do not introduce additional competing concepts without revising this document.
+产品真相优先于视觉偏好。任何新页面不得偷偷改变业务规则、数据含义或用户承诺。
 
-## 3. Composition Grammar
+## 2. Selected Direction
 
-Document:
+- **方向胶囊名称：**
+- **选择原因：**
+- **排除方向：**
+- **从其他方向借用的唯一维度（可选）：**
 
-- First visual anchor;
-- Secondary path and reading flow;
-- Grid and alignment logic;
-- Scale contrast;
-- Density and breathing rhythm;
-- Section variation rules;
-- Allowed intentional rupture;
-- Edge, bleed and crop behavior;
-- What information must remain visible together.
+### Art Direction Card
 
-## 4. Color Architecture
+- **三个气质词：**
+- **反形容词：**
+- **视觉命题：**
+- **主要张力：**
+- **主导表达媒介：**
+- **主导概念：**
+- **支持母题 1：**
+- **支持母题 2：**
+- **设计风险：**
+- **EXPRESSION / MOTION / DENSITY：**
 
-Explain by role:
+## 3. Research & Provenance
 
-### Atmosphere
+### Reference triangle
 
-- Background temperature;
-- Neutral hierarchy;
-- Surface relationships;
-- Dark mode behavior.
+| 参考 | 借鉴维度 | 不借鉴 | 来源 |
+|---|---|---|---|
+| 构图 |  |  |  |
+| 排版 / 色彩 |  |  |  |
+| 图像 / 材质 / 动效 |  |  |  |
 
-### Action
+### Aesthetic semantics
 
-- Primary and secondary action colors;
-- Brand accent range;
-- Scarcity and emphasis rules.
+- **Canonical aesthetic / family（若适用）：**
+- **Cultural markers：**
+- **Connotations：**
+- **Non-negotiables：**
+- **Cultural / ethical risks：**
+- **常见误读：**
 
-### Semantic
+参考是研究输入，不是复制规格。知名品牌主题或设计系统必须说明借用维度并去除专属识别元素。
 
-- Success, warning, error, information and data categories;
-- How meaning survives without color;
-- Contrast boundaries and banned combinations.
+## 4. Composition Grammar
 
-Multiple accents are allowed only when their roles are explicit and stable.
+- **Anchor：** 第一视觉锚点；
+- **Flow：** 视线和操作如何移动；
+- **Rhythm：** 密疏、大小、长短和停顿；
+- **Contrast：** 主要视觉张力；
+- **Breathing：** 留白如何分组和聚焦；
+- **Edge：** 出血、裁切、页面边缘和容器；
+- **Grid：**
+- **允许的一次破格：**
+- **Section 防重复规则：**
 
-## 5. Typography Voice
+每个新页面必须说明如何继承这套语法，而不是仅复用颜色。
 
-Document:
+## 5. Visual System
 
-- Intended typographic character;
-- Display, heading, body, label, metadata and mono roles;
-- Hierarchy through size, weight, width, color and spacing;
-- Heading line-break principles;
-- Maximum reading width and paragraph rhythm;
-- Number alignment, units and tabular figures;
-- CJK / Latin mixing, localization and fallback;
-- When a second type family is justified;
-- Project-specific anti-patterns.
+### Form
 
-Do not treat font selection alone as typography design.
+- 主要几何或有机语言；
+- 控件、内容和图像之间的形态关系；
+- Pill、圆形、直角或切角的使用边界。
 
-## 6. Shape Language
+### Color
 
-Document:
+说明：
 
-- Dominant geometry;
-- Radius scale and role;
-- Button, input, card, tag and image relationships;
-- Brand-specific silhouette or cut;
-- Icon stroke, fill and visual weight;
-- When pills, circles, sharp corners or irregular forms are justified.
+- Atmosphere、Action、Semantic 三层职责；
+- 中性色的色温和明度；
+- 强调色稀缺规则；
+- 状态色与品牌色如何避免混用；
+- 深色、高对比和打印模式。
 
-## 7. Material & Depth
+### Typography
 
-Choose a primary material logic:
+说明：
 
-- Flat / editorial;
-- Bordered / structural;
-- Tonal / layered;
-- Shadow / spatial;
-- Transparent / atmospheric;
-- Paper / textured.
+- Display、Heading、Body、Label、Data 的角色；
+- 字号比例、字重、颜色和间距；
+- 标题断行和最大行数；
+- 正文阅读宽度；
+- 数字、单位和表格对齐；
+- CJK、拉丁、i18n 和回退策略；
+- 字体授权和加载方式。
 
-Explain:
+### Space
 
-- Surface hierarchy;
-- When Card containers are justified;
-- Border, shadow and overlay rules;
-- Blur, transparency and texture limits;
-- Shadow hue, blur and spread;
-- Reduced-transparency fallback;
-- Which materials must never compete on the same surface.
+- 容器、网格和对齐逻辑；
+- 页面和 Section 间距；
+- 信息密度；
+- 宽屏使用和窄屏重构；
+- 哪些元素必须同时可见。
 
-## 8. Imagery & Illustration
+### Material & Depth
 
-Document:
+- 主要材质逻辑；
+- 层级通过空间、边框、色块、阴影、透明或纹理表达；
+- Card 的正当使用条件；
+- Overlay、背景 Dim 和焦点层级；
+- Reduced transparency / 低性能回退。
 
-- Subject matter;
-- Camera distance, viewpoint and lens character;
-- Lighting and color treatment;
-- Crop ratios and focal-point rules;
-- Person gaze and movement direction;
-- Image role: evidence, emotion, narrative or decoration;
-- Illustration geometry, perspective, line and texture;
-- Relationship between illustration and iconography;
-- Fallback strategy when asset quality is insufficient;
-- Licensing and provenance requirements.
+### Imagery / Illustration / Data Visualization
 
-## 9. Iconography
+- 摄影、插画、产品画面、作品或数据谁是主角；
+- 裁切、镜头、比例、色调和品质要求；
+- 图标家族、线宽、填充和尺寸；
+- 图表类型、颜色、标注和替代信息；
+- 素材缺失时的替代方案。
 
-Document:
+### Motion
 
-- Icon family;
-- Stroke / fill style;
-- Optical size and visual weight;
-- Label requirements;
-- Allowed exceptions;
-- Rules preventing mixed icon languages.
+- 状态反馈；
+- 空间解释；
+- 叙事编排；
+- 环境运动；
+- 进入、退出、打断和双向性；
+- 时长与缓动；
+- Reduced motion；
+- 技术阶梯与回退。
 
-## 10. Data Visualization
+## 6. Design System Strategy
 
-When applicable, document:
+- **策略：** Existing / Official / Curated scaffold / Custom
+- **主系统：**
+- **选择原因：**
+- **允许偏离：**
+- **必须复用组件：**
+- **允许新增组件：**
+- **禁止混用的系统：**
+- **Scaffold 借用维度：**
+- **必须去除的品牌专属元素：**
+- **图标策略：**
 
-- User comparison task;
-- Preferred chart families;
-- Color encoding roles;
-- Grid, labels, legends and annotation density;
-- Uncertainty and missingness display;
-- Non-color alternatives;
-- Responsive behavior;
-- Decorative charts that should not be added.
+若使用成熟主题，必须检查组件代码中的状态、阴影、边框和交互，不仅复制 `globals.css`。
 
-## 11. Layout & Responsive Transformation
+## 7. Surface Briefs
 
-Document:
+每个主要页面或表面建立简短子契约：
 
-- Container, grid and alignment;
-- Main page compositions;
-- Navigation patterns;
-- Density and vertical rhythm;
-- Desktop, tablet and mobile anchors;
-- What collapses, reorders, transforms or moves to another surface;
-- How the dominant concept survives on small screens;
-- Table, chart and full-bleed image strategy;
-- Viewport-specific exceptions.
+```markdown
+### [Surface name]
+- **Mode：** Persuade / Operate / Read / Experience
+- **Tier：** Existing / T1 / T2 / T3
+- **Task：**
+- **First anchor：**
+- **Narrative / flow：**
+- **Primary action：**
+- **Specific content：**
+- **Inherited rules：**
+- **Allowed deviation：**
+- **States：**
+- **Mobile transformation：**
+```
 
-Responsive design is not a universal single-column conversion.
+表面模式可以不同，但仍必须属于同一总体系统。
 
-## 12. Components
+## 8. Components & States
 
-For each core component describe:
+对核心组件说明：
 
-- Purpose and visual priority;
-- Variants and sizes;
-- Relationship to the dominant concept;
-- Hover, Active, Focus, Disabled, Loading, Empty and Error states;
-- Content-length and localization boundaries;
-- Mobile behavior;
-- Components that should not be substituted casually;
-- Conditions under which Card, Badge, Chip, Tooltip and Eyebrow are appropriate.
+- 目的与视觉优先级；
+- 变体和尺寸；
+- Default、Hover、Active、Pressed、Selected、Focus、Disabled、Loading、Error；
+- Selected 与 Pressed 的区别；
+- 内容长度和 i18n 边界；
+- 移动端行为；
+- 哪些组件不能随意替换。
 
-## 13. Motion & Time
+默认状态保持安静，为交互和语义状态保留强调空间。
 
-### Immediate feedback
+## 9. Responsive & Platform
 
-- Press, Hover, Focus and Validation;
+- 主要视口；
+- 移动端第一屏；
+- 导航与主要动作变化；
+- 表格、图表、画布和媒体策略；
+- Hover 到触控转换；
+- iOS / Android / Web / TV 原生预期；
+- 安全区、键盘和输入；
+- 主导概念在小屏如何继续表达。
 
-### Spatial explanation
+## 10. Accessibility, Content & Performance
 
-- Expand, collapse, switch, list-to-detail and navigation;
+- 对比度、键盘、Focus 和语义结构；
+- Label、错误和恢复路径；
+- 非颜色状态表达；
+- 长文本、极端数据和 200% 缩放；
+- i18n 和 RTL；
+- 图像和图表替代信息；
+- 性能预算；
+- 媒体、3D、Canvas 和 Shader 回退；
+- Reduced motion / transparency。
 
-### Narrative choreography
-
-- Page entry, scroll and section transitions;
-
-### Ambient motion
-
-- Whether it exists, why, and how it stops;
-
-### Constraints
-
-- Duration tiers;
-- Easing roles;
-- Stagger logic;
-- High-frequency interaction limits;
-- reduced motion;
-- Low-performance device fallback;
-- Allowed animated properties.
-
-## 14. Content & Asset Truth
-
-- Real content sources;
-- Allowed placeholders;
-- Prohibited invented metrics, customers, testimonials and awards;
-- AI-generated content disclosure;
-- Asset quality threshold;
-- Extreme-content cases to test.
-
-## 15. Accessibility
-
-- Contrast;
-- Focus and keyboard order;
-- Labels and errors;
-- Non-color state communication;
-- Touch targets;
-- Zoom and localization;
-- Image and chart alternatives;
-- Motion reduction;
-- Audience- or regulation-specific requirements.
-
-## 16. Do's and Don'ts
+## 11. Do / Don't
 
 ### Do
 
-- [Project-specific rule]
-- [Project-specific rule]
+- [项目特定的积极规则]
+- [项目特定的积极规则]
 
 ### Don't
 
-- [Most likely generic default]
-- [Competing visual concept]
-- [Known inconsistency or accessibility failure]
-- [Unverified content, fake data or unsupported claim]
+- [最可能出现的模板化默认]
+- [已知不一致或可访问性失败]
+- [未经验证的内容、假数据或品牌声明]
+- [不允许混入的视觉世界]
 
-## 17. Visual Critique Protocol
+不要复制外部 Skill 的全局字体、颜色和布局禁令。这里只记录当前项目有证据支持的规则。
 
-After design or implementation, evaluate:
+## 12. Iteration Policy
 
-- Five-second impression;
-- Thumbnail / Squint Test;
-- Grayscale hierarchy;
-- Composition and eye flow;
-- Brand fingerprint;
-- Typography;
-- Color, shape, material and depth;
-- Imagery, iconography and data visualization;
-- Motion;
-- Responsive views;
-- Real and extreme content.
+### Change tiers
 
-Classify findings as P0 direction, P1 structure, P2 finish or P3 preference.
+- **T1 新页面：** 轻量后轮 + 局部锚点 + Review；
+- **T2 新 Section：** 最小后轮 + 可选草图 + Review；
+- **T3 微调：** 直接实施 + 定向 Review。
+
+### World replacement
+
+只有用户明确授权改变主导视觉世界时进入。记录废弃 Token、迁移策略和前后对照标准。
+
+### Refinement actions
+
+允许按需使用：bolder、quieter、distill、typeset、layout、colorize、animate、delight、harden、adapt。
+
+一次迭代只设一个主动作和最多一个支持动作。
+
+## 13. Verification Contract
+
+### Mechanical checks
+
+- 对比度、Focus、Label、alt；
+- Overflow、点击目标、资源失败；
+- 关键视口和状态；
+- Reduced motion；
+- 性能和媒体回退。
+
+### Design critique
+
+- 五秒印象；
+- Squint / 灰度；
+- 构图、节奏和品牌指纹；
+- 排版、色彩、材质、图像和动效；
+- 小屏和真实内容。
+
+### Bounded passes
+
+```text
+Pass 1 批量发现
+→ 一次修复批次
+→ Pass 2 确认
+→ 停止
+```
+
+没有视觉证据时不得声称已经验证。
+
+## 14. Decision Log
+
+| 日期 | Surface | Tier / Action | 决策 | 原因 | 来源 | 影响章节 |
+|---|---|---|---|---|---|---|
+|  |  |  |  |  | 用户 / 项目 / 公开参考 / 专业推断 |  |
+
+## 15. Open Questions
+
+### Blocking
+
+- 无 / 
+
+### Non-blocking
+
+- 
 ````
 
 ## 输出原则
 
-- 不确定值使用 `[TBD]`，不要伪造 Token；
-- YAML 提供规范值，正文解释意图、角色和边界；
+- 不确定值使用 `[TBD]`，不伪造 Token；
+- YAML 提供规范值，正文解释意图、来源和边界；
 - Token 名称优先使用语义角色；
-- 只记录真正需要跨页面稳定的组件和规则；
-- 不把 UI Brief 中未确认的假设升级为规范；
-- 每项注明来自用户确认、项目证据、专业推断或暂定默认；
-- `DESIGN.md` 必须表达艺术指导，不应退化成颜色和圆角清单。
+- 只记录真正需要跨页面稳定的规则；
+- 不把 UI Brief 未确认的假设升级为规范；
+- 每项标明用户确认、项目证据、公开参考、专业推断或暂定默认；
+- DESIGN.md 必须表达 Art Direction 和迭代治理，不应退化为颜色与圆角清单；
+- 大型外部风格目录和研究数据不直接复制进项目，只保留选定方向需要的结论与来源。
 
 ## 可选验证
 
-若环境允许，可使用 Google `@google/design.md` CLI 检查结构、Token 引用和对比度。该格式目前为 alpha，应记录工具版本，并避免把可能变化的规范写成不可逆依赖。
-
-Windows / PowerShell 中，若带点命令名与文件关联冲突，可尝试官方无点别名：
-
-```powershell
-npx -p @google/design.md designmd lint DESIGN.md
-```
+若项目采用 Google `@google/design.md` 或其他 Token 检查工具，可验证结构、引用和对比度。记录工具版本，不把 alpha 规范写成不可逆依赖。
 
 只有用户要求或项目已采用该工具时才执行，不为简单页面自动安装依赖。
