@@ -1,42 +1,51 @@
 # Optional DESIGN.md Handoff
 
-本模板用于多页面、设计系统、重设计或预计跨 Agent / 跨会话迭代的项目。它参考 Google Labs `DESIGN.md` alpha 规范：YAML Token 提供准确值，Markdown 说明解释设计意图和使用边界。
+本模板用于多页面、设计系统、重设计或预计跨 Agent / 跨会话迭代的项目。它参考 Google Labs `DESIGN.md` alpha 思路：YAML Token 提供准确值，Markdown 说明艺术指导、使用边界和视觉系统关系。
 
-单个低风险页面或组件默认只输出 UI Brief，不额外制造文档。
+单个低风险页面或组件默认只输出 UI Brief 与 Art Direction Card，不额外制造文档。
 
 ## 生成条件
 
-至少满足一项时考虑生成：
+至少满足一项：
 
-- 多个页面需要保持视觉一致；
-- 后续会由不同 Agent 或开发者实施；
+- 多个页面需要保持同一视觉身份；
+- 后续由不同 Agent 或开发者实施；
 - 项目已有或准备建立 Design Tokens；
 - 用户明确要求持久设计规范；
-- 重设计需要记录旧系统到新系统的迁移基线。
+- 重设计需要记录旧系统到新系统的迁移基线；
+- 项目依赖明确的摄影、插画、数据图形或动效系统。
 
-生成前必须已经确认：Design Read、视觉主张、主要 Token 方向、核心组件状态和明确避免项。
+生成前必须已确认：
+
+- Art Direction Card；
+- 主导概念和支持母题；
+- 构图语法；
+- 主要 Token 方向；
+- 核心组件状态；
+- 明确避免项；
+- 内容与素材边界。
 
 ## 模板
 
-```markdown
+````markdown
 ---
 version: alpha
 name: [Design system name]
 description: [One-sentence purpose and visual thesis]
 colors:
-  primary: "[CSS color]"
-  on-primary: "[CSS color]"
-  secondary: "[CSS color]"
-  on-secondary: "[CSS color]"
-  background: "[CSS color]"
-  surface: "[CSS color]"
-  surface-muted: "[CSS color]"
+  atmosphere-background: "[CSS color]"
+  atmosphere-surface: "[CSS color]"
+  atmosphere-surface-muted: "[CSS color]"
   text-primary: "[CSS color]"
   text-secondary: "[CSS color]"
-  border: "[CSS color]"
+  border-subtle: "[CSS color]"
+  action-primary: "[CSS color]"
+  on-action-primary: "[CSS color]"
+  action-secondary: "[CSS color or TBD]"
   success: "[CSS color]"
   warning: "[CSS color]"
   error: "[CSS color]"
+  info: "[CSS color]"
 typography:
   display-lg:
     fontFamily: "[Font family]"
@@ -64,112 +73,285 @@ typography:
     fontSize: "[dimension]"
     fontWeight: [number]
     lineHeight: [number or dimension]
-rounded:
-  sm: "[dimension]"
-  md: "[dimension]"
-  lg: "[dimension]"
-  full: "9999px"
+shape:
+  radius-sm: "[dimension]"
+  radius-md: "[dimension]"
+  radius-lg: "[dimension]"
+  radius-full: "9999px"
 spacing:
   xs: "[dimension]"
   sm: "[dimension]"
   md: "[dimension]"
   lg: "[dimension]"
   xl: "[dimension]"
+  section-sm: "[dimension]"
+  section-lg: "[dimension]"
+layout:
+  container-max: "[dimension]"
+  grid-columns: [number]
+  grid-gutter: "[dimension]"
+  reading-width: "[dimension]"
+motion:
+  instant: "[duration]"
+  standard: "[duration]"
+  narrative: "[duration]"
+  easing-standard: "[CSS easing]"
+  easing-emphasized: "[CSS easing]"
 components:
   button-primary:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.on-primary}"
+    backgroundColor: "{colors.action-primary}"
+    textColor: "{colors.on-action-primary}"
     typography: "{typography.label-sm}"
-    rounded: "{rounded.md}"
+    rounded: "{shape.radius-md}"
     padding: "[dimension]"
-  button-primary-hover:
-    backgroundColor: "[CSS color or token reference]"
   input-default:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.atmosphere-surface}"
     textColor: "{colors.text-primary}"
-    rounded: "{rounded.md}"
+    rounded: "{shape.radius-md}"
     padding: "[dimension]"
   card-default:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.atmosphere-surface}"
     textColor: "{colors.text-primary}"
-    rounded: "{rounded.lg}"
+    rounded: "{shape.radius-lg}"
     padding: "[dimension]"
 ---
 
 # [Design system name]
 
-## Overview
+## 1. Art Direction Card
 
-- **Design Read:** [surface, audience, task, trust and brand constraints]
-- **Visual thesis:** [one executable sentence]
-- **EXPRESSION:** [1–10 and rationale]
-- **MOTION:** [1–10 and rationale]
-- **DENSITY:** [1–10 and rationale]
-- **Signature move:** [one main memorable device, or explicitly none]
+- **Surface type:** [product / dashboard / landing / editorial / portfolio / mobile / system]
+- **Audience and task:**
+- **Three character words:**
+- **Anti-word:**
+- **Visual thesis:**
+- **Primary tension:**
+- **Primary expressive medium:**
+- **EXPRESSION:** [1–10 + rationale]
+- **MOTION:** [1–10 + rationale]
+- **DENSITY:** [1–10 + rationale]
+- **Main design risk:**
 
-Explain the intended emotional response, product context, and what should remain visually subordinate.
+Describe the intended emotional response and what must remain visually subordinate.
 
-## Colors
+## 2. Dominant Concept & Motifs
 
-Explain each color by functional role rather than appearance alone:
+- **Dominant concept:**
+- **Why it fits the product and audience:**
+- **How it is perceived in five seconds:**
+- **Supporting motif 1:**
+- **Supporting motif 2:**
+- **Elements that must stay quiet:**
+- **Mobile translation:**
+- **Brand fingerprint without logo:**
 
-- Which color controls primary actions;
-- How semantic colors differ from brand accents;
-- Which surfaces create hierarchy;
-- Dark mode or high-contrast behavior;
-- Banned combinations and contrast boundaries.
+Do not introduce additional competing concepts without revising this document.
 
-## Typography
-
-Document:
-
-- Display, heading, body, label and mono roles;
-- Hierarchy through size, weight, color and spacing;
-- Maximum reading width and number alignment;
-- Long text, CJK, localization and fallback strategy;
-- Context-specific rules rather than universal font bans.
-
-## Layout
+## 3. Composition Grammar
 
 Document:
 
-- Grid, container width and alignment logic;
-- Main page composition and navigation pattern;
-- Information density and vertical rhythm;
-- Breakpoints and small-screen transformation;
-- What remains visible together and what may collapse or move.
+- First visual anchor;
+- Secondary path and reading flow;
+- Grid and alignment logic;
+- Scale contrast;
+- Density and breathing rhythm;
+- Section variation rules;
+- Allowed intentional rupture;
+- Edge, bleed and crop behavior;
+- What information must remain visible together.
 
-## Elevation & Depth
+## 4. Color Architecture
 
-Explain how hierarchy is expressed:
+Explain by role:
 
-- Border, tonal surface, shadow, overlay or whitespace;
+### Atmosphere
+
+- Background temperature;
+- Neutral hierarchy;
+- Surface relationships;
+- Dark mode behavior.
+
+### Action
+
+- Primary and secondary action colors;
+- Brand accent range;
+- Scarcity and emphasis rules.
+
+### Semantic
+
+- Success, warning, error, information and data categories;
+- How meaning survives without color;
+- Contrast boundaries and banned combinations.
+
+Multiple accents are allowed only when their roles are explicit and stable.
+
+## 5. Typography Voice
+
+Document:
+
+- Intended typographic character;
+- Display, heading, body, label, metadata and mono roles;
+- Hierarchy through size, weight, width, color and spacing;
+- Heading line-break principles;
+- Maximum reading width and paragraph rhythm;
+- Number alignment, units and tabular figures;
+- CJK / Latin mixing, localization and fallback;
+- When a second type family is justified;
+- Project-specific anti-patterns.
+
+Do not treat font selection alone as typography design.
+
+## 6. Shape Language
+
+Document:
+
+- Dominant geometry;
+- Radius scale and role;
+- Button, input, card, tag and image relationships;
+- Brand-specific silhouette or cut;
+- Icon stroke, fill and visual weight;
+- When pills, circles, sharp corners or irregular forms are justified.
+
+## 7. Material & Depth
+
+Choose a primary material logic:
+
+- Flat / editorial;
+- Bordered / structural;
+- Tonal / layered;
+- Shadow / spatial;
+- Transparent / atmospheric;
+- Paper / textured.
+
+Explain:
+
+- Surface hierarchy;
 - When Card containers are justified;
-- Overlay stacking and background dimming;
-- Shadow color, blur and spread if used;
-- Reduced-transparency fallback when applicable.
+- Border, shadow and overlay rules;
+- Blur, transparency and texture limits;
+- Shadow hue, blur and spread;
+- Reduced-transparency fallback;
+- Which materials must never compete on the same surface.
 
-## Shapes
+## 8. Imagery & Illustration
 
 Document:
 
-- Radius scale and consistency rule;
-- Button, input, card, chip and modal shape relationships;
-- Icon stroke or fill style;
-- Where pills, circles or sharp corners are functionally justified.
+- Subject matter;
+- Camera distance, viewpoint and lens character;
+- Lighting and color treatment;
+- Crop ratios and focal-point rules;
+- Person gaze and movement direction;
+- Image role: evidence, emotion, narrative or decoration;
+- Illustration geometry, perspective, line and texture;
+- Relationship between illustration and iconography;
+- Fallback strategy when asset quality is insufficient;
+- Licensing and provenance requirements.
 
-## Components
+## 9. Iconography
+
+Document:
+
+- Icon family;
+- Stroke / fill style;
+- Optical size and visual weight;
+- Label requirements;
+- Allowed exceptions;
+- Rules preventing mixed icon languages.
+
+## 10. Data Visualization
+
+When applicable, document:
+
+- User comparison task;
+- Preferred chart families;
+- Color encoding roles;
+- Grid, labels, legends and annotation density;
+- Uncertainty and missingness display;
+- Non-color alternatives;
+- Responsive behavior;
+- Decorative charts that should not be added.
+
+## 11. Layout & Responsive Transformation
+
+Document:
+
+- Container, grid and alignment;
+- Main page compositions;
+- Navigation patterns;
+- Density and vertical rhythm;
+- Desktop, tablet and mobile anchors;
+- What collapses, reorders, transforms or moves to another surface;
+- How the dominant concept survives on small screens;
+- Table, chart and full-bleed image strategy;
+- Viewport-specific exceptions.
+
+Responsive design is not a universal single-column conversion.
+
+## 12. Components
 
 For each core component describe:
 
 - Purpose and visual priority;
 - Variants and sizes;
-- Hover, Active, Focus, Disabled, Loading and Error states;
+- Relationship to the dominant concept;
+- Hover, Active, Focus, Disabled, Loading, Empty and Error states;
 - Content-length and localization boundaries;
 - Mobile behavior;
-- Components that should not be substituted casually.
+- Components that should not be substituted casually;
+- Conditions under which Card, Badge, Chip, Tooltip and Eyebrow are appropriate.
 
-## Do's and Don'ts
+## 13. Motion & Time
+
+### Immediate feedback
+
+- Press, Hover, Focus and Validation;
+
+### Spatial explanation
+
+- Expand, collapse, switch, list-to-detail and navigation;
+
+### Narrative choreography
+
+- Page entry, scroll and section transitions;
+
+### Ambient motion
+
+- Whether it exists, why, and how it stops;
+
+### Constraints
+
+- Duration tiers;
+- Easing roles;
+- Stagger logic;
+- High-frequency interaction limits;
+- reduced motion;
+- Low-performance device fallback;
+- Allowed animated properties.
+
+## 14. Content & Asset Truth
+
+- Real content sources;
+- Allowed placeholders;
+- Prohibited invented metrics, customers, testimonials and awards;
+- AI-generated content disclosure;
+- Asset quality threshold;
+- Extreme-content cases to test.
+
+## 15. Accessibility
+
+- Contrast;
+- Focus and keyboard order;
+- Labels and errors;
+- Non-color state communication;
+- Touch targets;
+- Zoom and localization;
+- Image and chart alternatives;
+- Motion reduction;
+- Audience- or regulation-specific requirements.
+
+## 16. Do's and Don'ts
 
 ### Do
 
@@ -178,28 +360,48 @@ For each core component describe:
 
 ### Don't
 
-- [Most likely template default for this project]
+- [Most likely generic default]
+- [Competing visual concept]
 - [Known inconsistency or accessibility failure]
-- [Unverified content, fake data or unsupported brand claim]
-```
+- [Unverified content, fake data or unsupported claim]
+
+## 17. Visual Critique Protocol
+
+After design or implementation, evaluate:
+
+- Five-second impression;
+- Thumbnail / Squint Test;
+- Grayscale hierarchy;
+- Composition and eye flow;
+- Brand fingerprint;
+- Typography;
+- Color, shape, material and depth;
+- Imagery, iconography and data visualization;
+- Motion;
+- Responsive views;
+- Real and extreme content.
+
+Classify findings as P0 direction, P1 structure, P2 finish or P3 preference.
+````
 
 ## 输出原则
 
-- 不确定值使用 `[TBD]`，不要伪造精确 Token；
-- YAML Token 是规范值，正文解释为什么和何时使用；
-- 颜色命名优先语义角色，避免只用 `blue-1`、`gray-2`；
-- 组件 Token 只覆盖真正需要跨页面稳定的核心组件；
-- 不把 UI Brief 中尚未确认的假设悄悄升级为设计规范；
-- 在 UI Brief 的决策记录中标明每项是“用户确认 / 证据推断 / 暂定默认”。
+- 不确定值使用 `[TBD]`，不要伪造 Token；
+- YAML 提供规范值，正文解释意图、角色和边界；
+- Token 名称优先使用语义角色；
+- 只记录真正需要跨页面稳定的组件和规则；
+- 不把 UI Brief 中未确认的假设升级为规范；
+- 每项注明来自用户确认、项目证据、专业推断或暂定默认；
+- `DESIGN.md` 必须表达艺术指导，不应退化成颜色和圆角清单。
 
 ## 可选验证
 
-若环境允许，可使用 Google `@google/design.md` CLI 检查结构、Token 引用和对比度。该格式目前为 alpha，应记录工具版本，并避免把可能变化的规范写死为项目不可逆依赖。
+若环境允许，可使用 Google `@google/design.md` CLI 检查结构、Token 引用和对比度。该格式目前为 alpha，应记录工具版本，并避免把可能变化的规范写成不可逆依赖。
 
-Windows / PowerShell 环境中，若 `npx @google/design.md` 因 `.md` 命令名与文件关联冲突无输出，可使用官方提供的无点别名调用方式：
+Windows / PowerShell 中，若带点命令名与文件关联冲突，可尝试官方无点别名：
 
 ```powershell
 npx -p @google/design.md designmd lint DESIGN.md
 ```
 
-只有用户要求或项目已采用该工具时才执行，不要为了一个简单页面自动安装依赖。
+只有用户要求或项目已采用该工具时才执行，不为简单页面自动安装依赖。
