@@ -2,15 +2,15 @@
 
 一个面向前端 UI 的引导式访谈、Art Direction 与设计迭代 Agent Skill。
 
-它不会在用户只说“做得更高级”时直接生成四个模板方案，而是先判断当前表面是说服、操作、阅读还是体验，再通过前轮访谈建立边界，生成 2–3 个真正不同的方向胶囊，待用户看见方向后进行后轮访谈，最终形成可实现、可验证、可持续迭代的 UI Brief 与可选 DESIGN.md。
+它不会在用户只说“做得更高级”时直接生成四个模板方案，而是先判断当前表面、项目场景和变更规模。Greenfield / World Replacement 通过双轮访谈与方向胶囊锁定新方向；Extension 和多数 Refinement 走轻量路径，最终形成与范围相称的 UI Brief、修改边界或可选 DESIGN.md。
 
-## v0.3 的核心能力
+## 核心能力
 
 - **一次只问一个高影响问题**，避免长问卷；
 - **表面模式**：Persuade / Operate / Read / Experience；
 - **项目场景**：Greenfield、World Replacement、Extension、Refinement；
 - **增量 Tier**：T1 新页面、T2 新 Section、T3 微调；
-- **双轮访谈**：先建立产品边界，再在方向胶囊选定后拔具体细节；
+- **双轮访谈**：Greenfield / World Replacement 先建立产品边界，再在方向胶囊选定后拔具体细节；
 - **方向胶囊**：视觉命题、气质、主导概念、七维摘要、资产需求和风险；
 - **Art Direction Card**：三个气质词、反形容词、视觉张力和设计风险；
 - **七维审美画像**：Form、Color、Type、Space、Material、Motion、Cultural markers；
@@ -22,7 +22,7 @@
 
 ## 为什么采用双轮访谈
 
-用户在没有看到任何视觉方向时，通常只能给出“高级、简洁、科技感”一类低信息词。v0.3 将访谈拆成：
+用户在没有看到任何视觉方向时，通常只能给出“高级、简洁、科技感”一类低信息词。完整方向流程将访谈拆成：
 
 ```text
 前轮：产品、用户、范围、反参考、内容资产、平台
@@ -40,15 +40,18 @@ skills/grill-me-for-ui/
 ├── SKILL.md
 └── references/
     ├── design-intelligence-router.md
+    ├── core-cheatsheet.md
     ├── aesthetic-research-protocol.md
     ├── iteration-and-refinement.md
     ├── interview-map.md
     ├── taste-calibration.md
+    ├── taste-deep.md
     ├── ui-brief-template.md
     ├── ui-brief-implementation-module.md
     ├── design-md-template.md
     ├── design-token-template.md
     ├── visual-critique.md
+    ├── visual-critique-deep.md
     └── ui-vocabulary.md
 
 examples/
@@ -86,6 +89,8 @@ Full structural rebuild 可以重建结构和实现，但仍保留视觉身份�
 主 Skill 负责路由，不把所有风格、配色、组件和动效目录常驻上下文。大型知识库按查询使用，减少首次输入和 Token 消耗。
 
 UI Brief 默认只加载方向与决策核心；复杂流程、状态、响应式或正式验证才追加 Implementation Module。DESIGN.md 默认只加载长期契约正文；项目已有或已明确决定建立可执行 Design Tokens 时才追加 Token Module。
+
+Extension T1/T2 与多数 Refinement 默认使用轻量 `core-cheatsheet.md`。完整审美解释和 11 项深度 Critique 分别位于 `taste-deep.md` 与 `visual-critique-deep.md`，只在轻量路径不足时加载。模板保持为主 Skill 可直接引用的一层文件，避免深层引用链。
 
 ### 4. 有界验证
 
@@ -159,6 +164,8 @@ npx skills add https://github.com/linnnn89/grill-me-for-ui --skill grill-me-for-
 
 ## 完整会话示例
 
+以下文件只供人类阅读和离线评估，正常 Agent 运行时不加载：
+
 - [`dashboard-session.md`](examples/dashboard-session.md)：Operate / 数据产品的标准访谈；
 - [`editorial-brand-session.md`](examples/editorial-brand-session.md)：Editorial / 文化品牌 Art Direction；
 - [`dual-round-music-product-session.md`](examples/dual-round-music-product-session.md)：Experience + Read 的前轮、方向胶囊、后轮与锁定过程。
@@ -196,7 +203,8 @@ T3 微调和单组件任务不会自动制造完整文档。
 ## 版本状态
 
 - **v0.2**：Art Direction、构图语法、视觉系统和 Professional Visual Critique，已合并到 `main`；
-- **v0.3**：Design Intelligence Router、双轮访谈、方向胶囊、增量 Tier、定向精修和有界验证，当前通过独立 PR 迭代。
+- **v0.3**：Design Intelligence Router、双轮访谈、方向胶囊、增量 Tier、定向精修和有界验证，已合并；
+- **v0.4**：精简主 Router，新增日常 Cheatsheet，并将深度审美与 Critique 按需拆分。
 
 ## License
 

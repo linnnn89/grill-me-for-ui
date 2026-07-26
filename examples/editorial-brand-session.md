@@ -1,5 +1,7 @@
 # Example Session: Independent Culture Magazine
 
+> **仅供人类阅读与离线评估。正常 Agent 运行时禁止加载本示例。**
+
 本示例展示如何对高度视觉化、非医学、非 Dashboard 的项目进行设计访谈。重点是艺术指导和构图，不是固定脚本。
 
 ## 用户输入

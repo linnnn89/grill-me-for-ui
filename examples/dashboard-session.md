@@ -1,5 +1,7 @@
 # Example Session: Medical Research Dashboard
 
+> **仅供人类阅读与离线评估。正常 Agent 运行时禁止加载本示例。**
+
 本示例展示问题风格和分支依赖，不是固定脚本。
 
 ## 用户输入
