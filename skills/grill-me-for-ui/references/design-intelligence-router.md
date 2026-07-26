@@ -1,6 +1,6 @@
 # Design Intelligence Router
 
-仅在主 Skill 的基础分类仍有歧义时读取本文件。它提供场景边界、动作选择和最小执行路径，不要求每次加载全部参考资料。
+仅在主 Skill 的基础分类仍有歧义时读取本文件。它提供场景边界、动作选择和最小执行路径。本阶段只完成可解释的 Router Trace 并停止；下一阶段才加载选定 Playbook，不与 Interview、Research 或 Critique 同时读取。
 
 ## 一、先判断表面模式，而不是产品类别
 
@@ -88,10 +88,10 @@
 
 | 家族 | 动作 | 使用时机 | 首要参考 | 结束结果 |
 |---|---|---|---|---|
-| 定义 | **shape / direct** | 在代码前澄清产品、流程或艺术指导 | `interview-map.md` | 共享理解、方向或 UI Brief |
+| 定义 | **shape / direct** | 在代码前澄清产品、流程或艺术指导 | Greenfield / World Replacement 用 `interview-map.md`；Extension 用 `core-cheatsheet.md` | 共享理解、方向或 UI Brief |
 | 研究 | **research** | 风格词含糊，需要外部参考和文化语义 | `aesthetic-research-protocol.md` | 2–3 个方向胶囊 |
 | 沉淀 | **document** | 从现有实现提炼长期设计规则 | `design-md-template.md` | 可选 DESIGN.md |
-| 诊断 | **critique** | 判断“为什么不对” | `iteration-and-refinement.md` | 设计判断与重写深度 |
+| 诊断 | **critique** | 判断“为什么不对” | 常规定位用 `core-cheatsheet.md`；结构性诊断用 `iteration-and-refinement.md` | 设计判断与重写深度 |
 | 检查 | **audit** | 检查可访问性、响应式、性能与机械错误 | `iteration-and-refinement.md` | 可验证问题清单 |
 | 综合精修 | **polish** | 交付前整体完成度不足但问题不单一 | `iteration-and-refinement.md` | 有界精修计划 |
 | 定向精修 | **bolder / quieter / distill / typeset / layout / colorize / animate / delight** | 问题已经定位 | `iteration-and-refinement.md` | 单一目标修改 |
@@ -103,6 +103,8 @@
 一次迭代只设一个主动作，最多附带一个支持动作，例如 `layout + quieter`。每阶段只读取表中一份首要参考；后续阶段可以换参考，但不要同时加载内容重叠的 Playbook。
 
 ## 四、双轮访谈路由
+
+仅 Greenfield / World Replacement 默认走完整双轮。Extension T1/T2 使用 `core-cheatsheet.md` 的 1–3 个局部问题；T3 直接实施；多数 Refinement 先用轻量诊断，不重跑产品访谈。
 
 ### 前轮：建立边界
 
@@ -214,6 +216,7 @@
 
 - 主 Skill 只负责路由；
 - 每轮只加载当前动作对应的一份核心参考；
+- Extension T1/T2 和多数 Refinement 优先 `core-cheatsheet.md`；
 - 大型风格、配色和组件目录按查询加载，不常驻上下文；
 - 增量任务先读旧 DESIGN.md 的相关章节，不重新载入全部研究资料；
 - 只有结构性方向变化才回到完整研究和后轮访谈；

@@ -1,5 +1,7 @@
 # Example Session: Dual-Round Interview for a Music Discovery Product
 
+> **仅供人类阅读与离线评估。正常 Agent 运行时禁止加载本示例。**
+
 本示例验证 v0.3 的完整核心链路：前轮访谈 → 方向胶囊 → 选择 → 后轮访谈 → Art Direction Card。它不是固定问卷，也不是要求真实会话一次展示所有内容。
 
 ## 0. 用户输入

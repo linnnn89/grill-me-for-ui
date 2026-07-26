@@ -2,6 +2,8 @@
 
 本文件帮助 Agent 选择下一条最有价值的问题分支。它不是按顺序念完的问卷。
 
+仅 Greenfield / World Replacement 默认使用完整双轮。Extension T1/T2 与多数 Refinement 默认先用 `core-cheatsheet.md`，只有出现新的产品或方向阻塞决策才进入本问题树。
+
 ## 使用原则
 
 - 一次只解决一个高影响决定；
