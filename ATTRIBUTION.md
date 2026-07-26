@@ -20,6 +20,40 @@
 
 采用的思想包括：从用户的自然语言描述中识别前端术语；把页面拆解为布局、组件、状态、视觉与交互概念；先解释可观察结果，再使用专业术语。
 
+## Taste Skill
+
+- Repository: https://github.com/Leonxlnx/taste-skill
+- Website: https://www.tasteskill.dev
+- Relevant skill: `design-taste-frontend`
+- License: MIT
+- Copyright: Leonxlnx and contributors
+
+采用的思想包括：在设计前进行 Brief Inference；用视觉表达度、动效和密度描述设计方向；识别常见 AI 设计默认值；重设计采用 Audit-First；实施前后进行 Pre-Flight 检查。
+
+本项目没有照搬其字体、颜色、Hero、Card 或动画禁令，而是将这些规则改造成需要结合界面类型、受众、任务风险和品牌约束验证的情境化判断。
+
+## Google Labs — DESIGN.md
+
+- Repository: https://github.com/google-labs-code/design.md
+- Specification: https://stitch.withgoogle.com/docs/design-md/specification
+- License: Apache-2.0
+- Copyright: Google LLC and contributors
+
+采用的思想包括：用 YAML Design Tokens 提供准确值，用 Markdown 说明设计意图；将视觉身份沉淀为可供多个 Agent 和多次迭代复用的持久设计契约；对 Token 引用、对比度和结构进行验证。
+
+本仓库中的 `design-md-template.md` 是根据公开规范独立编写的可选交付模板。Google `DESIGN.md` 当前为 alpha，使用时应以其最新公开规范为准。
+
+## Google Labs — Stitch Skills / taste-design
+
+- Repository: https://github.com/google-labs-code/stitch-skills
+- Relevant skill: `plugins/stitch-utilities/skills/taste-design`
+- License: Apache-2.0
+- Copyright: Google LLC and contributors
+
+采用的思想包括：把视觉气氛、颜色角色、排版架构、组件状态、布局、动效与反模式组织为语义化设计说明。
+
+本项目明确不采用其中“所有活动组件永久循环动画”“所有移动端多列无例外单列”“跨场景禁止某字体、颜色或构图”等绝对规则，而将其作为反思 AI 默认偏差的参考。
+
 ## Community interview skills
 
 还参考了社区中的 `spec-interview` 与 `interview-me` 类 Skill 所体现的通用方法：
