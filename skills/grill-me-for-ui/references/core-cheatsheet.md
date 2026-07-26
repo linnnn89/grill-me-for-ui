@@ -1,6 +1,6 @@
 # Core Design Cheatsheet
 
-用于已有基线上的 T1/T2 Extension 和方向正确的常规 Refinement。它不是缩小版全流程：若分类、视觉身份或产品方向仍不确定，返回主 Router 选择其他 Playbook。
+用于已有基线上的 T1/T2 Extension，以及方向正确但动作或边界尚未定位的 Refinement。它是诊断与边界卡，不是定向精修操作手册：若分类、视觉身份或产品方向仍不确定，返回主 Router；若用户已明确 polish、定向动作、audit、harden 或 adapt，直接使用 `iteration-and-refinement.md`。
 
 ## 快速判断
 
@@ -83,4 +83,14 @@ Refinement 深度：Light 只调层级、排版与细节；Medium 可重组布�
 - 主动作及预期效果明确；
 - 剩余问题可在实现或一次定向 Review 中解决。
 
-不要生成完整方向研究、全站 Brief 或 DESIGN.md，除非任务另有独立触发条件。
+用户只要求诊断或边界时，按以下形状内联交付并停止：
+
+```text
+目标 / 基线：
+范围 / 非目标：
+保留 / 允许改变：
+主动作 / 预期效果：
+验证 / 停止：
+```
+
+用户还要求可执行精修计划或修改时，动作明确后在下一阶段切换 `iteration-and-refinement.md`。不要生成完整方向研究、全站 Brief 或 DESIGN.md，除非任务另有独立触发条件。

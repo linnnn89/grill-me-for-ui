@@ -204,7 +204,7 @@ T3 微调和单组件任务不会自动制造完整文档。
 
 - **v0.2**：Art Direction、构图语法、视觉系统和 Professional Visual Critique，已合并到 `main`；
 - **v0.3**：Design Intelligence Router、双轮访谈、方向胶囊、增量 Tier、定向精修和有界验证，已合并；
-- **v0.4**：精简主 Router，新增日常 Cheatsheet，并将深度审美与 Critique 按需拆分，当前通过独立 PR 迭代。
+- **v0.4**：精简主 Router，新增日常 Cheatsheet，并将深度审美与 Critique 按需拆分。
 
 ## License
 

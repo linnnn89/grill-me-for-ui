@@ -120,4 +120,4 @@
 
 专业判断用于 Art Direction、锚点、构图、节奏、品牌指纹、参考转译与动效因果。自动规则不能替代审美，Critique 也不能把机械错误包装成偏好。
 
-完成定位后返回 `visual-critique.md` 形成唯一 Fix batch，不在本文件开启新一轮。
+完成定位后按已加载的 `visual-critique.md` 格式形成唯一 Fix batch；不重新读取文件，也不在本文件开启新一轮。

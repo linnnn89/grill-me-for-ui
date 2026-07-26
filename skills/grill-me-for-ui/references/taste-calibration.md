@@ -77,6 +77,7 @@
 - 第一眼与 Art Direction Card 一致；
 - 识别点不只来自颜色、渐变或圆角；
 - 真实内容驱动布局，没有假指标、客户或评价；
+- Placeholder 明确标注；AI 生成内容、数据时间和不确定性保持透明；
 - 构图有锚点、视线流和密疏节奏，不是均匀 Card 堆叠；
 - Type、Color、Form、Space、Material、Motion 来自同一方向；
 - 动效解释反馈、空间或叙事，不无理由争夺注意力；
