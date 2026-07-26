@@ -1,211 +1,248 @@
 # Grill Me for UI
 
-一个面向前端 UI 的引导式访谈、Art Direction 与设计迭代 Agent Skill。
+> A design-intelligence router for UI work: interview first, choose the right design capability, then implement and verify within a bounded loop.
+>
+> 面向 UI 设计工作的 Design Intelligence Router：先访谈与判断，再选择正确能力，最后在有界循环内实施和验证。
 
-它不会在用户只说“做得更高级”时直接生成四个模板方案，而是先判断当前表面、项目场景和变更规模。Greenfield / World Replacement 通过双轮访谈与方向胶囊锁定新方向；Extension 和多数 Refinement 走轻量路径，最终形成与范围相称的 UI Brief、修改边界或可选 DESIGN.md。
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## 核心能力
+## What it does / 它解决什么问题
 
-- **一次只问一个高影响问题**，避免长问卷；
-- **表面模式**：Persuade / Operate / Read / Experience；
-- **项目场景**：Greenfield、World Replacement、Extension、Refinement；
-- **增量 Tier**：T1 新页面、T2 新 Section、T3 微调；
-- **双轮访谈**：Greenfield / World Replacement 先建立产品边界，再在方向胶囊选定后拔具体细节；
-- **方向胶囊**：视觉命题、气质、主导概念、七维摘要、资产需求和风险；
-- **Art Direction Card**：三个气质词、反形容词、视觉张力和设计风险；
-- **七维审美画像**：Form、Color、Type、Space、Material、Motion、Cultural markers；
-- **检索式知识加载**：只加载当前问题需要的风格、色彩、组件或动效知识；
-- **设计系统策略**：Existing / Official / Curated scaffold / Custom；
-- **定向精修动词**：bolder、quieter、distill、typeset、layout、colorize、animate、delight、harden、adapt；
-- **有界视觉验证**：一次批量发现、一次修复、一次确认，然后停止；
-- **机械检测与专业 Critique 分离**，避免把规则当品味，也避免把机械错误包装成偏好。
+Most UI agents jump from an underspecified request to code. **Grill Me for UI** keeps the upstream design decisions explicit:
 
-## 为什么采用双轮访谈
+多数 UI Agent 会把模糊需求直接变成代码。**Grill Me for UI** 先把上游设计决策变得可见、可解释、可交接：
 
-用户在没有看到任何视觉方向时，通常只能给出“高级、简洁、科技感”一类低信息词。完整方向流程将访谈拆成：
+- identify the current surface, project scenario, change tier, and refinement depth;
+- determine whether the task needs shape, research, critique, polish, layout, hardening, or another focused capability;
+- ask one high-impact question at a time, with a recommendation and a clear stop condition;
+- produce a UI Brief, an incremental plan, or an optional `DESIGN.md` when the scope justifies it;
+- validate with one discovery pass, one fix batch, and one confirmation pass.
 
-```text
-前轮：产品、用户、范围、反参考、内容资产、平台
-→ 审美研究与 2–3 个方向胶囊
-→ 后轮：页面叙事、第一锚点、文案声音、七维视觉细节、状态和小屏
-→ UI Brief / DESIGN.md
-```
+- 判断当前表面、项目场景、变更 Tier 和精修深度；
+- 判断任务需要 shape、research、critique、polish、layout、harden 等哪一种能力；
+- 一次只问一个高影响问题，同时给出推荐和停止条件；
+- 按范围生成 UI Brief、增量计划，或可选的 `DESIGN.md`；
+- 通过一次发现、一次修复和一次确认完成有限验证。
 
-这样把探索发生在 Moodboard 或方向层，而不是先写四套代码再让用户挑。
+It is an upstream design router, not a style encyclopedia or a UI code generator.
 
-## 仓库结构
+它是上游设计路由器，不是风格百科，也不是 UI 代码生成器。
 
-```text
-skills/grill-me-for-ui/
-├── SKILL.md
-└── references/
-    ├── design-intelligence-router.md
-    ├── core-cheatsheet.md
-    ├── aesthetic-research-protocol.md
-    ├── iteration-and-refinement.md
-    ├── interview-map.md
-    ├── taste-calibration.md
-    ├── taste-deep.md
-    ├── ui-brief-template.md
-    ├── ui-brief-implementation-module.md
-    ├── design-md-template.md
-    ├── design-token-template.md
-    ├── visual-critique.md
-    ├── visual-critique-deep.md
-    └── ui-vocabulary.md
+## Quick start / 快速开始
 
-examples/
-├── dashboard-session.md
-├── editorial-brand-session.md
-└── dual-round-music-product-session.md
-```
+### Install / 安装
 
-## 默认工作流
+Install the skill with an Agent Skills-compatible CLI:
 
-### 1. 判断表面模式
-
-| 模式 | 用户成功 |
-|---|---|
-| Persuade | 理解价值并行动 |
-| Operate | 完成任务 |
-| Read | 理解信息 |
-| Experience | 沉浸于内容或作品 |
-
-模式以当前页面为准，不以公司行业为准。
-
-### 2. 判断项目场景
-
-先检查现有实现、视觉语言和设计契约。缺少 DESIGN.md 不等于 Greenfield。
-
-- **Greenfield**：没有可复用基线，进入完整双轮流程；
-- **World Replacement**：已有基线且已授权替换视觉身份；
-- **Extension**：继续现有身份，并按 T1 新页面、T2 新 Section、T3 微调选择短路径；
-- **Refinement**：继续现有身份，选择 Light polish / Medium restructure / Full structural rebuild。
-
-Full structural rebuild 可以重建结构和实现，但仍保留视觉身份；视觉身份本身错误时改走 World Replacement。
-
-### 3. 每阶段只加载一个相关 Playbook
-
-主 Skill 负责路由，不把所有风格、配色、组件和动效目录常驻上下文。大型知识库按查询使用，减少首次输入和 Token 消耗。
-
-UI Brief 默认只加载方向与决策核心；复杂流程、状态、响应式或正式验证才追加 Implementation Module。DESIGN.md 默认只加载长期契约正文；项目已有或已明确决定建立可执行 Design Tokens 时才追加 Token Module。
-
-Extension T1/T2 与多数 Refinement 默认使用轻量 `core-cheatsheet.md`。完整审美解释和 11 项深度 Critique 分别位于 `taste-deep.md` 与 `visual-critique-deep.md`，只在轻量路径不足时加载。模板保持为主 Skill 可直接引用的一层文件，避免深层引用链。
-
-### 4. 有界验证
-
-```text
-Pass 1：桌面 + 移动 + 状态批量发现
-→ 一次修复批次
-→ Pass 2：确认 P0/P1 和回归
-→ 停止
-```
-
-## 安装
-
-将 `skills/grill-me-for-ui` 复制到 Agent 的 Skills 目录，例如：
-
-```text
-.agents/skills/grill-me-for-ui
-.claude/skills/grill-me-for-ui
-```
-
-支持 Agent Skills CLI 的环境可尝试：
+使用支持 Agent Skills 的 CLI 安装：
 
 ```bash
 npx skills add https://github.com/linnnn89/grill-me-for-ui --skill grill-me-for-ui
 ```
 
-不同 Agent 的路径和调用方式可能不同，请以对应平台文档为准。
+For Codex, place `skills/grill-me-for-ui` under `$CODEX_HOME/skills/grill-me-for-ui`. Keep activation opt-in if you do not want every UI task to enter a design interview.
 
-## 使用示例
+对于 Codex，可将 `skills/grill-me-for-ui` 放到 `$CODEX_HOME/skills/grill-me-for-ui`。如果不希望所有 UI 任务都进入设计访谈，请保持按需启用。
 
-### 全新产品
+### Invoke / 调用
 
-```text
-/grill-me-for-ui 我想做一个面向独立研究者的数据产品，先不要写代码。
-```
+Use it when the request still contains meaningful design choices:
 
-### 品牌官网
+当需求仍包含重要设计取舍时使用：
 
 ```text
-先做前轮访谈，再给我三个真正不同的方向胶囊。不要只换颜色。
+/grill-me-for-ui I want to redesign the onboarding flow. Interview me before writing code.
 ```
-
-### 风格消歧
 
 ```text
-客户说要“cozy retro but not kitsch”。帮我消歧，并给出两个可实施方向。
+/grill-me-for-ui 我想重做 onboarding 流程。先访谈，再写代码。
 ```
 
-### 现有项目扩展
+For a small, already-decided implementation, skip the skill and execute the confirmed plan directly.
+
+对于已经明确的单点实现，不需要启动本 Skill，直接执行已确认方案即可。
+
+## The routing model / 路由模型
+
+The router makes four decisions before selecting a playbook:
+
+路由器在选择 Playbook 前先判断四件事：
+
+| Dimension / 维度 | Options / 选项 | Question / 判断问题 |
+|---|---|---|
+| Surface / 表面 | Persuade · Operate · Read · Experience | What does success mean on this surface? / 当前页面的成功是什么？ |
+| Scenario / 场景 | Greenfield · World Replacement · Extension · Refinement | Is there a visual and product baseline to preserve? / 是否存在需要沿用的基线？ |
+| Tier / 范围 | T1 new page · T2 new section · T3 micro-tuning | How much of the existing surface changes? / 本次改变多大范围？ |
+| Depth / 深度 | Light · Medium · Full structural | Is the direction right, or is the structure failing? / 需要精修还是结构重写？ |
+
+Then it selects one primary action, such as `shape`, `research`, `critique`, `polish`, `bolder`, `quieter`, `distill`, `typeset`, `layout`, `colorize`, `animate`, `delight`, `harden`, `adapt`, `verify`, or `document`.
+
+然后只选择一个主动作，例如 `shape`、`research`、`critique`、`polish`、`bolder`、`quieter`、`distill`、`typeset`、`layout`、`colorize`、`animate`、`delight`、`harden`、`adapt`、`verify` 或 `document`。
+
+### Scenario routing / 场景路由
 
 ```text
-读取现有 DESIGN.md。我想新增 /pricing 页面，按 T1 最小路径处理，不要重做全站风格。
-```
+Greenfield / World Replacement
+  → first-round interview
+  → research only when it can change the direction
+  → 2–3 genuinely different direction capsules
+  → second-round detail interview
 
-### UI 精修
+Extension T1/T2 or most Refinement
+  → core cheatsheet
+  → local decision or bounded change plan
+
+Explicit polish, targeted action, audit, hardening, or adaptation
+  → iteration-and-refinement playbook
+
+Implemented UI with visual evidence
+  → bounded visual critique
+```
 
 ```text
-这个界面方向没错，但太吵。使用 quieter + layout，保持功能和信息密度。
+Greenfield / World Replacement：完整双轮访谈，必要时研究，再进入方向胶囊和细节确认。
+
+Extension T1/T2 或多数 Refinement：优先使用轻量 Cheatsheet，形成局部决定或修改边界。
+
+已明确的 polish、定向动作、audit、harden 或 adapt：进入迭代与精修 Playbook。
+
+已有实现且需要视觉证据：进入有界 Visual Critique。
 ```
 
-### 模糊反馈
+## Why the interview is two-round / 为什么是双轮访谈
+
+Users can rarely specify a useful visual system before seeing any direction. The first round therefore establishes product truth and constraints; only after direction capsules exist does the second round ask about visual detail.
+
+用户在没有看到视觉方向前，通常只能说“高级、简洁、科技感”。因此前轮先锁定产品目标、用户、内容资产、约束和反参考；看到方向胶囊后，后轮才确认页面叙事、第一锚点、文案声音、色彩、排版、状态和动效。
 
 ```text
-我觉得页面还是很 AI，但说不清原因。先 critique，不要直接重写。
+Round 1: product, users, content, constraints, anti-references
+    → research when ambiguity is consequential
+    → 2–3 differentiated direction capsules
+Round 2: narrative, first anchor, voice, visual system, states, motion
+    → UI Brief / DESIGN.md when the scope warrants a durable handoff
 ```
 
-### 验证
+方向胶囊必须在视觉命题、信息结构、内容依赖、资产要求、技术复杂度和风险上产生真实差异，而不是只替换颜色。
+
+## Progressive disclosure / 渐进披露
+
+The runtime path is intentionally small:
+
+运行时路径刻意保持轻量：
+
+1. Load `SKILL.md` and classify the task.
+2. Load one primary playbook for the current stage.
+3. Load a deep appendix only when the lightweight path hits its trigger condition.
+4. Load output templates only for a durable handoff.
+5. Stop when the next decision is no longer blocked.
+
+1. 先读取 `SKILL.md` 并完成分类；
+2. 当前阶段只加载一个主 Playbook；
+3. 轻量路径命中触发条件后才追加 deep 附录；
+4. 只有需要持久交接时才加载输出模板；
+5. 下一步不再存在阻塞性决定时停止。
+
+This keeps the high-frequency Extension and Refinement paths short while preserving full research and interview depth for genuinely new or replacement projects.
+
+这样可以让高频的 Extension 和 Refinement 保持短路径，同时为真正的新项目或视觉世界替换保留完整访谈与研究深度。
+
+## Reference map / 参考文件
+
+| File / 文件 | Role / 用途 |
+|---|---|
+| [`SKILL.md`](skills/grill-me-for-ui/SKILL.md) | Main router, stop rules, loading discipline / 主路由、停止规则和加载纪律 |
+| [`design-intelligence-router.md`](skills/grill-me-for-ui/references/design-intelligence-router.md) | Surface, scenario, tier, and boundary definitions / 分类与边界定义 |
+| [`core-cheatsheet.md`](skills/grill-me-for-ui/references/core-cheatsheet.md) | Lightweight Extension and Refinement diagnosis / 轻量增量与精修诊断 |
+| [`interview-map.md`](skills/grill-me-for-ui/references/interview-map.md) | Two-round interview and direction capsules / 双轮访谈与方向胶囊 |
+| [`aesthetic-research-protocol.md`](skills/grill-me-for-ui/references/aesthetic-research-protocol.md) | Style disambiguation and reference analysis / 风格消歧与参考分析 |
+| [`taste-calibration.md`](skills/grill-me-for-ui/references/taste-calibration.md) | Art Direction Card and visual system decisions / Art Direction Card 与视觉系统决策 |
+| [`iteration-and-refinement.md`](skills/grill-me-for-ui/references/iteration-and-refinement.md) | Targeted actions, diagnosis, and bounded iteration / 定向动作、诊断和有界迭代 |
+| [`visual-critique.md`](skills/grill-me-for-ui/references/visual-critique.md) | Mechanical checks and design judgment / 机械检查与设计判断 |
+| [`ui-brief-template.md`](skills/grill-me-for-ui/references/ui-brief-template.md) | Durable UI decision handoff / 持久化 UI 决策交接 |
+| [`design-md-template.md`](skills/grill-me-for-ui/references/design-md-template.md) | Long-term design contract / 长期设计契约 |
+
+Deep references are loaded only when the corresponding playbook says they are needed. Examples are for human reading and offline evaluation; normal runtime does not load them.
+
+Deep 文件只在对应 Playbook 明确需要时加载。Examples 仅供人类阅读和离线评估，正常运行时不加载。
+
+## Example prompts / 使用示例
 
 ```text
-按有界验证协议检查桌面、移动和关键状态。只做一轮批量修复和一次确认。
+New product / 新产品
+I am building a data product for independent researchers. Interview me before writing code.
+
+Existing extension / 现有项目扩展
+Read the existing DESIGN.md. Add a /pricing page as T1. Preserve the current visual world.
+
+Targeted refinement / 定向精修
+The direction is right but the page is too noisy. Use quieter + layout and keep the information density.
+
+Ambiguous feedback / 模糊反馈
+The page still feels AI-generated, but I cannot explain why. Critique first; do not rewrite yet.
+
+Verification / 验证
+Run the bounded visual verification protocol across desktop, mobile, and key states.
 ```
 
-## 完整会话示例
+```text
+全新产品：我想做一个面向独立研究者的数据产品。先访谈，再写代码。
 
-以下文件只供人类阅读和离线评估，正常 Agent 运行时不加载：
+现有项目扩展：读取现有 DESIGN.md，新增 /pricing 页面，按 T1 处理并保持当前视觉世界。
 
-- [`dashboard-session.md`](examples/dashboard-session.md)：Operate / 数据产品的标准访谈；
-- [`editorial-brand-session.md`](examples/editorial-brand-session.md)：Editorial / 文化品牌 Art Direction；
-- [`dual-round-music-product-session.md`](examples/dual-round-music-product-session.md)：Experience + Read 的前轮、方向胶囊、后轮与锁定过程。
+定向精修：方向没错，但页面太吵。使用 quieter + layout，保持信息密度。
 
-## 输出
+模糊反馈：页面还是很像 AI 生成的，但我说不清原因。先 critique，不要重写。
 
-按任务范围可生成：
+验证：按有界协议检查桌面、移动端和关键状态。
+```
 
-1. 共享理解摘要；
-2. 前轮访谈记录；
-3. 审美研究与方向胶囊；
-4. Art Direction Card；
-5. 页面地图、Section 叙事和用户流程；
-6. 七维视觉系统；
-7. 设计系统和图标策略；
-8. 状态、响应式、可访问性和技术约束；
-9. UI Brief；
-10. 可选 DESIGN.md；
-11. Visual Critique 与验证证据。
+See the [`examples/`](examples/) directory for complete sessions:
 
-T3 微调和单组件任务不会自动制造完整文档。
+完整会话见 [`examples/`](examples/)：
 
-## 与其他设计 Skill 的关系
+- [`dashboard-session.md`](examples/dashboard-session.md) — Operate / data product / 数据产品；
+- [`editorial-brand-session.md`](examples/editorial-brand-session.md) — editorial brand direction / 文化品牌方向；
+- [`dual-round-music-product-session.md`](examples/dual-round-music-product-session.md) — full two-round flow / 完整双轮流程。
 
-本项目不是风格百科、主题注册表、UI 代码生成器或浏览器检测器。它位于这些能力的上游和中间层：
+## What it produces / 输出内容
 
-- 用访谈建立用户真正的判断边界；
-- 用研究协议选择和转译审美方向；
-- 用路由器决定需要哪一种后续能力；
-- 用 UI Brief / DESIGN.md 保持跨页面和跨 Agent 一致；
-- 用有界 Critique 验证实现，而不无限 polish。
+Depending on scope, the skill can produce:
 
-外部 Skill 的大型风格目录、品牌主题和 detector 规则不会直接复制进本仓库。具体来源与借鉴边界见 [`ATTRIBUTION.md`](ATTRIBUTION.md)。
+根据任务范围，可生成：
 
-## 版本状态
+- a shared-understanding trace and assumptions / 共享理解摘要与假设；
+- an interview record and direction capsules / 访谈记录与方向胶囊；
+- an Art Direction Card and seven-dimension visual system / Art Direction Card 与七维视觉系统；
+- a page narrative, component, state, responsive, and accessibility plan / 页面叙事、组件、状态、响应式和可访问性计划；
+- a UI Brief or incremental implementation plan / UI Brief 或增量实施计划；
+- an optional `DESIGN.md` long-term contract / 可选的 `DESIGN.md` 长期契约；
+- bounded critique evidence and a final stop decision / 有界 Critique 证据与最终停止决定。
 
-- **v0.2**：Art Direction、构图语法、视觉系统和 Professional Visual Critique，已合并到 `main`；
-- **v0.3**：Design Intelligence Router、双轮访谈、方向胶囊、增量 Tier、定向精修和有界验证，已合并；
-- **v0.4**：精简主 Router，新增日常 Cheatsheet，并将深度审美与 Critique 按需拆分。
+Small T3 changes and confirmed implementation tasks should not manufacture a full design document.
 
-## License
+小型 T3 修改和已确认的实现任务不应强行生成完整设计文档。
 
-MIT
+## Scope and attribution / 边界与归属
+
+This project is responsible for upstream design discovery, direction selection, routing, and bounded verification. It does not copy external style databases, prompt libraries, CLIs, detectors, or code-generation templates.
+
+本项目负责上游设计探索、方向选择、能力路由和有界验证。不复制外部风格数据库、Prompt 库、CLI、Detector 或代码生成模板。
+
+Methodological influences and boundaries are documented in [`ATTRIBUTION.md`](ATTRIBUTION.md).
+
+方法论来源与借鉴边界见 [`ATTRIBUTION.md`](ATTRIBUTION.md)。
+
+## Project status / 项目状态
+
+Current release line: **v0.4 — token-efficient Design Intelligence Router**.
+
+当前版本线：**v0.4 — Token 高效的 Design Intelligence Router**。
+
+- v0.2: Art Direction, composition grammar, visual critique, and basic UI Brief / Art Direction、构图语法、视觉 Critique 与基础 UI Brief；
+- v0.3: router taxonomy, two-round interviews, direction capsules, refinement actions, and bounded verification / 路由分类、双轮访谈、方向胶囊、精修动作与有界验证；
+- v0.4: slim main router, lightweight cheatsheet, and on-demand deep references / 精简主路由、轻量 Cheatsheet 与按需 deep 参考文件。
+
+## License / 许可证
+
+[MIT](LICENSE)
