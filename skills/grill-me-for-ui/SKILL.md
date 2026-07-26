@@ -1,312 +1,180 @@
 ---
 name: grill-me-for-ui
-description: 通过一次一问的引导式访谈，把模糊的前端 UI 想法、页面重设计需求、参考图或产品流程，收敛为兼顾产品任务、信息架构、艺术指导、视觉系统、状态、响应式、可访问性与技术约束的可执行 UI Brief。支持全新设计、视觉世界替换、增量扩展、现有 UI 精修、审美研究和实施后验证。适用于用户明确要求“grill me for UI”“先访谈再设计”，或新页面、Dashboard、Landing、Portfolio、内容产品、移动端、组件系统及现有 UI 翻修存在关键设计歧义的场景。不要用于需求已完整的单点样式修改、纯代码 Bug，或用户明确要求立即实施且不存在重要设计取舍的任务。
+description: 通过一次一问的设计访谈与确定性路由，把模糊 UI 需求、页面重设计、参考图或现有界面反馈收敛为可执行的 Art Direction、UI Brief、增量计划或视觉评审。适用于用户明确要求“grill me for UI”“先访谈再设计”，或新页面、重大视觉替换、增量扩展、现有 UI 精修、审美研究和实施后验证仍存在重要设计取舍的场景。不要用于需求完整的单点样式修改、纯代码 Bug，或用户明确要求执行已经确认的实现计划。
 ---
 
 # Grill Me for UI
 
-在写代码、生成页面或大规模改动 UI 前，先判断当前任务属于哪个表面、哪个生命周期阶段以及真正需要哪一种设计能力。
+先判断任务需要哪一种设计能力，再读取一份最相关的参考。不要把每个 UI 请求都跑成完整设计流程。
 
-你的角色不是风格选择器，也不是规则复读器。你需要像资深产品设计师、Art Director 与设计工程师一样：读懂产品和受众，找出真正的设计张力，提出有立场的推荐，并把决定整理成可实现、可验证、可持续复用的设计契约。
+## 不可违反的行为
 
-## 核心结果
+1. 一次只问一个会改变方案的高影响问题。
+2. 先检查代码、截图、设计稿、真实内容、现有 UI Brief / DESIGN.md 和已确认决定，再提问。
+3. 只询问必须由用户决定的产品优先级、品牌态度和主观边界；技术事实由 Agent 调查。
+4. 每题说明影响并给出有立场的推荐；先描述可观察效果，再使用术语。
+5. 先目标与内容，后 Art Direction；先方向与构图，后组件和细节。
+6. 用户未确认设计基线前，不大规模实施或改写设计文件。
+7. 使用真实内容和资产；不编造指标、客户、评价、奖项或品牌声明。
+8. 一个主导概念，最多两个支持母题。
+9. 用户可随时采用推荐、跳过、回退、结束访谈或缩小范围。
+10. 验证默认只有 Pass 1、一个 Fix batch 和 Pass 2；没有视觉证据时不声称通过。
 
-根据任务范围，最终应解决其中适用部分：
+## 0. Fast Exit
 
-- 用户、核心任务和成功结果；
-- 表面模式：Persuade / Operate / Read / Experience；
-- 当前场景：全新、视觉世界替换、增量扩展或精修；
-- 内容、信息架构、页面地图和交互路径；
-- Art Direction、主导概念、视觉张力和支持母题；
-- Form、Color、Type、Space、Material、Motion 与 Cultural markers；
-- 设计系统、图标家族和平台策略；
-- 加载、空、错误、成功、权限、长文本和极端数据；
-- 桌面、移动、键盘、辅助技术和性能边界；
-- 可观察、可测试且有证据的验收标准。
+需求完整、低风险且没有设计取舍的单点修改，例如明确的 Token、尺寸或样式参数，不进入 Router Trace，不加载参考文件，也不访谈。直接按现有系统实施并做一次定向 Review。
 
-不是每个任务都需要完整输出。根据路由选择最小充分路径。
+纯代码 Bug 或已经确认的实现计划同样退出本 Skill。用户明确调用本 Skill 时，可以简短说明采用短路径，但不要强制完整流程。
 
-## 一、触发边界
+## 1. 读取最小证据
 
-### 使用本 Skill
+只检查当前表面和本次变更需要的资产：
 
-- 用户明确调用 `grill-me-for-ui`、`grill me`、`interview me` 或要求先定义 UI；
-- 用户只有粗略想法、参考链接、截图、草图或“做得更高级 / 更有品味”；
-- 新页面、完整流程、组件系统或重大翻修存在多个合理方向；
-- 用户想建立 Art Direction、UI Brief、DESIGN.md 或实现提示词；
-- 用户看完实现只能说“感觉不对”，需要把隐性判断语言化；
-- 已有设计契约，需要判断新页面、Section 或微调的最小迭代路径。
+- 当前页面、组件、路由和主要状态；
+- 真实文案、数据、图像、图标和作品；
+- UI Brief、DESIGN.md、Token、组件库和主题；
+- 设备、平台、性能、无障碍与时间边界；
+- 当前对话已经确认的决定。
 
-### 不要自动使用
+不要因为缺少 DESIGN.md 就把已有产品当作 Greenfield。现有实现也可以构成设计基线。
 
-- 低风险、单点、无歧义修改，例如“按钮圆角改为 8px”；
-- 纯代码、数据或后端 Bug；
-- 用户只问一个术语；
-- 需求、设计系统和验收标准已完整，继续访谈不会改变实现；
-- 用户只要求执行已经确认的实现计划。
+## 2. 输出 Router Trace
 
-用户明确调用本 Skill 时，即使任务很小也进入快速模式，但不要强制完整访谈。
-
-## 二、不可违反的规则
-
-1. **一次只问一个高影响问题。** 不一次倾倒长问卷。
-2. **先检查，后提问。** 代码、截图、设计稿、品牌规范、现有 Token 和文档能回答的事实由 Agent 自行检查。
-3. **只询问必须由用户决定的取舍。** 技术事实由 Agent 查，产品优先级、品牌态度和主观边界由用户定。
-4. **每题给出有立场的推荐。** 说明证据、收益和代价，不用无性格折中回避判断。
-5. **先描述可观察效果，再补术语。** 不让非设计用户猜专业名词。
-6. **先目标和内容，再艺术指导；先艺术指导和构图，再组件与细节。**
-7. **区分延续与替换。** Refinement 保留现有身份；Redesign 可以替换视觉世界，但保留产品真相。
-8. **一个主导概念，最多两个支持母题。** 允许丰富，不允许多个概念并列争夺注意力。
-9. **不要只会避免错误。** Anti-Slop 是底线，必须主动形成美感和辨识度。
-10. **真实内容优先。** 不为填满页面编造指标、客户、评价、奖项或品牌声明。
-11. **知识按需加载。** 每轮只读取当前路由需要的一份核心参考，不把整个风格库塞进上下文。
-12. **验证有界。** 默认一次批量发现、一次修复、一次确认，不无限截图和微调。
-13. **访谈期间不擅自实施。** 用户未确认设计基线前，不大规模改代码或设计文件。
-14. **允许用户控制节奏。** 用户可以说“采用推荐”“跳过”“按默认”“回上一题”“结束访谈”。
-
-## 三、启动流程
-
-### 1. 读取最小必要证据
-
-优先查看：
-
-- 当前页面、组件或路由；
-- 截图、草图、Figma 和参考网站；
-- 真实文案、数据、摄影、插画、图标和作品；
-- 现有 UI Brief、DESIGN.md、Token、组件库和主题；
-- 设备、浏览器、平台、性能和无障碍边界；
-- 当前对话中已经确认的决定。
-
-不要默认检查整个仓库。增量任务只读取与本次表面相关的旧资产。
-
-### 2. 判断表面模式
-
-读取 `references/design-intelligence-router.md`，选择一个主模式：
-
-- **Persuade**：用户决定并行动；
-- **Operate**：用户完成任务；
-- **Read**：用户理解信息；
-- **Experience**：内容或作品本身成为体验。
-
-模式以当前页面为准，不以公司行业为准。
-
-### 3. 判断项目场景
-
-- **Greenfield**：没有成熟设计契约；
-- **World Replacement**：产品真相保留，视觉世界替换；
-- **Extension**：已有方向，需要 T1 新页面、T2 新 Section 或 T3 微调；
-- **Refinement**：现有界面需要 Light polish、Medium restructure 或 Full rebuild。
-
-### 4. 输出当前理解
-
-在第一题前用 3–6 行说明：
+在第一题或执行动作前，用 3–6 行记录：
 
 ```text
-我将它理解为：[表面模式]，面向[用户]，核心任务是[任务]；
-当前属于[场景 / Tier / 重写深度]；
-已知约束：[内容、品牌、系统、设备或时间]；
-当前最值得先解决的是：[一个上游决策]。
+Surface：[Persuade / Operate / Read / Experience]
+Baseline：[无可复用基线 / 现有实现 / 现有设计契约]
+Scenario：[Greenfield / World Replacement / Extension / Refinement]
+Scope：[全局或受影响表面；适用时 T1 / T2 / T3]
+Depth / Action：[适用时重写深度；一个主动作 + 最多一个支持动作]
+Reference / Stop：[本轮读取文件；本阶段停止条件]
 ```
 
-若理解错误，先修正再继续。
+证据不足时写“待检查 / 待确认”，不要为了填满 Trace 猜测 Surface 或 Scenario。用户纠正上游判断后再继续。
 
-## 四、选择最小工作路径
+### Surface
 
-### 路径 A · 双轮访谈与新方向
+- **Persuade**：用户理解价值并行动；
+- **Operate**：用户高效、安全地完成任务；
+- **Read**：用户理解、定位并保留信息；
+- **Experience**：内容或作品本身成为体验。
 
-适合 Greenfield、World Replacement 和高品牌要求项目。
+以当前表面的主要成功结果为准。只能有一个主模式，可记录一个次模式。
 
-#### 前轮：建立边界
+### Scenario precedence
 
-一次一问，依次解决适用项：
+按以下顺序判断：
 
-- 一句话产品或页面任务；
-- 用户进入和离开的路径；
-- 表面模式和成功标准；
-- 必须保留、非目标和反参考；
-- 真实内容与资产质量；
-- 平台、时间和长期迭代方式。
+1. 没有可复用实现、视觉语言或设计契约，才是 **Greenfield**。
+2. 已有基线，但用户明确授权放弃现有视觉身份，是 **World Replacement**。
+3. 继续现有视觉身份并新增页面、Section 或组件，是 **Extension**。
+4. 继续现有视觉身份并改善已有界面，是 **Refinement**。
 
-前轮不深入讨论颜色、字体和具体组件。
+缺少书面契约但已有一致实现时，先从相关实现恢复最小基线，再进入 Extension 或 Refinement。不要自动重跑 Greenfield。
 
-#### 审美研究与方向胶囊
+### Scope and depth
 
-需要外部参考或文化风格时读取 `references/aesthetic-research-protocol.md`。
+Extension 按变更规模记录：
 
-基于前轮证据生成 2–3 个真正不同的方向胶囊。每个方向至少包含：
+- **T1**：新路由或独立页面组；
+- **T2**：已有页面的新主要 Section；
+- **T3**：Token、单组件、状态或动效参数。
 
-- 一句视觉命题；
-- 三个气质词和一个反形容词；
-- 主导概念与主要张力；
-- 七维摘要；
-- 需要的内容资产；
-- 最大收益、风险和与其他方向的差异。
+World Replacement 仍要记录受影响表面；局部替换可同时标记 T1 / T2。
 
-方向胶囊可以配参考图或低成本草图，但不要先写完整生产代码。
+Refinement 另选重写深度：
 
-#### 后轮：看见方向后拔细节
+- **Light polish**：保留信息架构和视觉身份；
+- **Medium restructure**：可调整分组、布局和组件层级，保留产品逻辑与视觉身份；
+- **Full structural rebuild**：可重建构图、页面结构和实现，但仍保留现有视觉身份。
 
-用户选定或混合方向后，再一次一问解决：
+如果视觉身份本身错误，不属于 Full structural rebuild，改走 World Replacement。
 
-- 页面地图和 Section 叙事；
-- 第一视觉锚点和下一步动作；
-- 文案语气和内容长度；
-- 构图、排版、图像、材质和动效边界；
-- 用户担忧和反向细节；
-- 小屏、状态和设计系统策略。
+需要更多边界案例时才读取 `references/design-intelligence-router.md`。
 
-最后锁定 Art Direction Card、UI Brief，必要时生成 DESIGN.md。
+## 3. 选择最小路径
 
-### 路径 B · 增量扩展
+| 意图 | 主动作 | 首要参考 | 最小结果 |
+|---|---|---|---|
+| 模糊需求或新方向 | shape / direct | `references/interview-map.md` | 共享理解、方向选择、UI Brief |
+| 风格词含糊或需要外部参考 | research | `references/aesthetic-research-protocol.md` | 2–3 个方向胶囊 |
+| 已有方向的页面或 Section 扩展 | shape | 旧契约 + `references/interview-map.md` | 局部 Brief 或增量计划 |
+| 现有 UI 诊断或精修 | critique / polish / targeted action | `references/iteration-and-refinement.md` | 诊断、重写深度、修改范围 |
+| 机械质量与生产边界 | audit / harden / adapt | `references/iteration-and-refinement.md` | 可验证问题或加固计划 |
+| 实施后证据确认 | verify | `references/visual-critique.md` | 两轮内的验证结论 |
+| 从现有实现提炼长期契约 | document | `references/design-md-template.md` | 可选 DESIGN.md |
 
-先读取旧 UI Brief / DESIGN.md 并回放：
+`critique` 是设计判断，`audit` 是机械检查，`verify` 是实施后的证据确认。`polish` 适用于综合完成度；问题已经定位时，改用 bolder、quieter、distill、typeset、layout、colorize、animate、delight、harden 或 adapt。
 
-- 主导概念；
-- 设计系统和 Token；
-- 已有页面或视觉锚点；
-- 当前 Tier；
-- 本次允许改变的范围。
+每阶段只加载表中一份首要参考。后续阶段可以换参考，但不要同时读取两个内容重叠的 Playbook。
 
-T1/T2 只做轻量后轮和局部方向验证；T3 直接实施并定向 Review。不要把增量任务假装成新项目。
+## 4. 路径规则
 
-### 路径 C · 现有 UI 精修
+### Greenfield / World Replacement
 
-读取 `references/iteration-and-refinement.md`。
+```text
+前轮：任务、用户、范围、保留项、反参考、内容资产和约束
+→ 必要时研究
+→ 2–3 个真正不同的方向胶囊
+→ 用户选择主方向
+→ 后轮：页面叙事、第一锚点、文案、视觉边界、状态和小屏
+→ UI Brief；满足生成条件时才追加 DESIGN.md
+```
 
-先选择一个主动作：
+World Replacement 必须先锁定产品真相、保留行为、废弃范围、迁移风险和前后对照标准。
 
-- critique / audit / polish；
-- bolder / quieter / distill；
-- typeset / layout / colorize / animate / delight；
-- harden / adapt / verify。
+### Extension
 
-一次迭代只设一个主动作，最多一个支持动作。先声明重写深度，再修改。
+先回放旧契约的主导概念、Token、组件、视觉锚点和允许偏离范围。
 
-### 路径 D · 实施后验证
+- T1：轻量后轮 + 局部锚点；
+- T2：最小后轮 + 必要时一个草图；
+- T3：目标明确时直接实施 + 定向 Review。
 
-读取 `references/visual-critique.md` 与 `references/iteration-and-refinement.md` 的有界验证协议。
+不要重新研究全站方向。
 
-默认：
+### Refinement
+
+先声明核心失败、重写深度和一个主动作。方向正确时不重跑前轮；方向错误时停止精修，提议 World Replacement 并等待授权。
+
+### Verify
+
+只读取 `references/visual-critique.md`：
 
 ```text
 Pass 1：桌面 + 移动 + 状态批量发现
-→ 一次修复批次
-→ Pass 2：确认 P0/P1 和回归
+→ 一个 Fix batch
+→ Pass 2：确认 P0/P1、机械检查和回归
 → 停止
 ```
 
-机械检测与专业判断分开记录。没有截图或等价证据时，不声称视觉结果已通过。
+## 5. 结束与交付
 
-## 五、每轮提问格式
+当以下条件成立时结束当前阶段：
 
-```markdown
-### 问题 N · [当前分支]
+- Surface、Scenario、范围和主动作明确；
+- 主要用户、任务、真实资产与成功结果明确；
+- 选定方向足以排除主要替代方案，或现有方向明确继续；
+- 剩余未知不会显著改变下一阶段；
+- 后续可以通过实现或有界验证继续收敛。
 
-[只提出一个需要用户决定的问题]
+先给不超过 12 行的共享理解和最多 3 个非阻塞问题。用户确认后：
 
-**为什么现在要决定：** [它会影响哪些后续选择]
+- 使用 `references/ui-brief-template.md` 生成按范围裁剪的 UI Brief；
+- 仅多页面、设计系统、World Replacement、持续扩展或跨 Agent 项目使用 `references/design-md-template.md`；
+- 只有用户继续要求时进入视觉稿、Figma、实现或代码。
 
-**可选方向：**
-A. [方向、可观察效果和主要代价]
-B. [形成真实对比的方向和代价]
-C. [确有第三种合理方向时使用]
+用户中途结束时生成部分 Brief，并标明未确认分支。
 
-**我的推荐：** B — [结合当前证据给出理由]
+## 按需参考
 
-回复 A/B/C，或直接说你的方案。
-```
-
-不是每题必须有三个选项。开放问题更合适时仍给出一个暂定推荐假设。
-
-用户回答后只记录本轮变化：
-
-```markdown
-**已确认：** [决定]
-**影响：** [锁定、排除或延后的方向]
-```
-
-不要每轮重复整个 Brief。
-
-## 六、Art Direction 与视觉系统
-
-视觉分支读取 `references/taste-calibration.md`。至少解决：
-
-- 三个具体气质词 + 一个反形容词；
-- 一句视觉命题；
-- EXPRESSION / MOTION / DENSITY；
-- 一个主导概念和最多两个支持母题；
-- Anchor / Flow / Rhythm / Contrast / Breathing / Edge；
-- Typography / Color / Shape / Material & Depth / Imagery / Motion；
-- Cultural markers、非谈判项与风格漂移风险。
-
-设计系统策略从以下选择一个：现有系统、官方系统、策展式脚手架或自定义系统。知名品牌系统只能作为实现基础，不能替代当前产品的 Art Direction。
-
-## 七、状态、响应式和可访问性
-
-凡涉及数据、网络、权限或输入，判断适用状态：
-
-- 初始、加载、空、部分数据；
-- 验证错误、请求失败、成功；
-- 无权限、只读、禁用；
-- 破坏性操作、撤销和恢复；
-- 长文本、极端数据、i18n；
-- 移动端空间不足和键盘聚焦。
-
-默认确保：
-
-- 对比度和 Focus 可见；
-- 表单有 Label、错误和恢复路径；
-- 颜色不是唯一状态信号；
-- 点击目标合理；
-- 动画可减少；
-- 移动端重新编排核心任务，而非机械单列。
-
-只询问会改变方案的例外，不在访谈中背诵规范。
-
-## 八、设计契约与收尾
-
-达到以下条件即可结束当前阶段：
-
-- 当前表面模式和项目场景明确；
-- 主要用户、任务、范围和成功结果明确；
-- 方向胶囊已选择，或现有方向明确继续；
-- Art Direction、构图和视觉系统足以指导实施；
-- 状态、响应式、系统策略和关键风险明确；
-- 剩余未知不会显著改变下一阶段。
-
-收尾：
-
-1. 给出不超过 12 行的共享理解摘要；
-2. 列出最多 3 个不阻塞的开放问题；
-3. 标注用户确认、项目证据、专业推断和暂定默认；
-4. 用户确认后使用 `references/ui-brief-template.md`；
-5. 多页面、设计系统或跨 Agent 项目使用 `references/design-md-template.md`；
-6. 只有用户继续要求时进入视觉稿、Figma、实现或代码。
-
-用户中途结束时生成部分 Brief，并明确未确认分支。
-
-## 九、反模式
-
-- 把所有任务都跑成完整深度访谈；
-- 一次问十几个问题；
-- 在用户没看见方向前要求他决定大量视觉细节；
-- 用行业匹配、星标或风格数据库替代专业判断；
-- 生成四个只换颜色的页面方案；
-- 把品牌系统当作可直接复制的视觉身份；
-- 每次新页面都重新发明主语言；
-- 把局部微调扩大成全站重设计；
-- 只会 Anti-Slop，不会主动形成视觉观点；
-- 无限截图、微调和自我审查；
-- 为页面填充编造内容、指标和社会证明。
-
-## 十、参考文件
-
-- `references/design-intelligence-router.md`：表面模式、场景、Tier、工作动词和最小路径；
-- `references/aesthetic-research-protocol.md`：审美消歧、七维画像、方向胶囊和电影研究；
-- `references/iteration-and-refinement.md`：重写深度、精修动作、技术阶梯和有界验证；
-- `references/interview-map.md`：具体问题分支；
+- `references/design-intelligence-router.md`：场景边界、动作选择和疑难路由；
+- `references/interview-map.md`：前轮、方向选择、后轮和增量问题树；
+- `references/aesthetic-research-protocol.md`：风格消歧、七维研究和方向胶囊；
+- `references/iteration-and-refinement.md`：重写深度、定向精修和生产加固；
 - `references/taste-calibration.md`：Art Direction、构图语法和视觉系统；
-- `references/ui-brief-template.md`：结构化 UI Brief；
-- `references/design-md-template.md`：持久设计契约；
-- `references/visual-critique.md`：实施后的专业视觉评审；
-- `references/ui-vocabulary.md`：自然语言与 UI 术语映射。
+- `references/ui-brief-template.md`：按范围裁剪的 UI Brief；
+- `references/design-md-template.md`：可选长期设计契约；
+- `references/visual-critique.md`：实施后的唯一验证协议；
+- `references/ui-vocabulary.md`：仅在用户描述与 UI 术语存在歧义时读取。

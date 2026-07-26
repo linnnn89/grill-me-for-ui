@@ -1,6 +1,6 @@
 # Optional DESIGN.md Handoff
 
-本模板用于多页面、设计系统、World Replacement、持续扩展或跨 Agent / 跨会话项目。YAML Token 提供准确值，Markdown 解释 Art Direction、来源、使用边界、组件行为和迭代规则。
+本模板用于多页面、设计系统、World Replacement、持续扩展或跨 Agent / 跨会话项目。项目已经采用可执行 Design Tokens 时，YAML 提供准确值；否则省略未建立的 Token 区，不为填满模板发明数值。Markdown 解释 Art Direction、来源、使用边界、组件行为和迭代规则。
 
 单个低风险页面、T3 微调或一次性概念稿默认只输出 UI Brief 与 Art Direction Card。
 
@@ -25,6 +25,8 @@
 - 核心组件状态；
 - 明确避免项和内容真实性边界。
 
+若已有 UI Brief，只在 DESIGN.md 中保留需要跨表面稳定的结论并链接其来源。不要复制完整访谈记录、被否决的方向胶囊或一次性页面计划。
+
 ## 模板
 
 ````markdown
@@ -33,6 +35,7 @@ version: "0.3"
 name: "[Design system name]"
 status: draft | locked | evolving
 surfaceMode: persuade | operate | read | experience
+baselineEvidence: none | implementation | design-contract
 projectScenario: greenfield | world-replacement | extension | refinement
 selectedDirection: "[Direction capsule name]"
 expression: [1-10]
@@ -443,9 +446,11 @@ Pass 1 批量发现
 ## 输出原则
 
 - 不确定值使用 `[TBD]`，不伪造 Token；
+- 项目尚未采用可执行 Token 时，省略对应 YAML 组，不输出大段 `[TBD]`；
 - YAML 提供规范值，正文解释意图、来源和边界；
 - Token 名称优先使用语义角色；
 - 只记录真正需要跨页面稳定的规则；
+- UI Brief 负责本次任务与方向选择，DESIGN.md 不重复其完整访谈和候选方案；
 - 不把 UI Brief 未确认的假设升级为规范；
 - 每项标明用户确认、项目证据、公开参考、专业推断或暂定默认；
 - DESIGN.md 必须表达 Art Direction 和迭代治理，不应退化为颜色与圆角清单；

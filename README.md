@@ -70,14 +70,16 @@ examples/
 
 ### 2. 判断项目场景
 
-- **Greenfield**：完整双轮流程；
-- **World Replacement**：保留产品真相，替换视觉世界；
-- **T1 新页面**：轻量后轮 + 局部锚点 + Review；
-- **T2 新 Section**：最小后轮 + 可选草图 + Review；
-- **T3 微调**：直接实施 + 定向 Review；
-- **Refinement**：先选择 Light polish / Medium restructure / Full rebuild。
+先检查现有实现、视觉语言和设计契约。缺少 DESIGN.md 不等于 Greenfield。
 
-### 3. 只加载一个相关 Playbook
+- **Greenfield**：没有可复用基线，进入完整双轮流程；
+- **World Replacement**：已有基线且已授权替换视觉身份；
+- **Extension**：继续现有身份，并按 T1 新页面、T2 新 Section、T3 微调选择短路径；
+- **Refinement**：继续现有身份，选择 Light polish / Medium restructure / Full structural rebuild。
+
+Full structural rebuild 可以重建结构和实现，但仍保留视觉身份；视觉身份本身错误时改走 World Replacement。
+
+### 3. 每阶段只加载一个相关 Playbook
 
 主 Skill 负责路由，不把所有风格、配色、组件和动效目录常驻上下文。大型知识库按查询使用，减少首次输入和 Token 消耗。
 
