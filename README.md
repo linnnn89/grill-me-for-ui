@@ -51,7 +51,8 @@ skills/grill-me-for-ui/
 
 examples/
 ├── dashboard-session.md
-└── editorial-brand-session.md
+├── editorial-brand-session.md
+└── dual-round-music-product-session.md
 ```
 
 ## 默认工作流
@@ -149,6 +150,12 @@ npx skills add https://github.com/linnnn89/grill-me-for-ui --skill grill-me-for-
 ```text
 按有界验证协议检查桌面、移动和关键状态。只做一轮批量修复和一次确认。
 ```
+
+## 完整会话示例
+
+- [`dashboard-session.md`](examples/dashboard-session.md)：Operate / 数据产品的标准访谈；
+- [`editorial-brand-session.md`](examples/editorial-brand-session.md)：Editorial / 文化品牌 Art Direction；
+- [`dual-round-music-product-session.md`](examples/dual-round-music-product-session.md)：Experience + Read 的前轮、方向胶囊、后轮与锁定过程。
 
 ## 输出
 
