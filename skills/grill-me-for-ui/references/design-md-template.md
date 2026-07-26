@@ -1,6 +1,6 @@
 # Optional DESIGN.md Handoff
 
-本模板用于多页面、设计系统、World Replacement、持续扩展或跨 Agent / 跨会话项目。项目已经采用可执行 Design Tokens 时，YAML 提供准确值；否则省略未建立的 Token 区，不为填满模板发明数值。Markdown 解释 Art Direction、来源、使用边界、组件行为和迭代规则。
+本模板用于多页面、设计系统、World Replacement、持续扩展或跨 Agent / 跨会话项目。项目已有或已明确决定建立可执行 Design Tokens 时，才从 `design-token-template.md` 追加准确值；否则省略 Token 模块，不为填满模板发明数值。Markdown 解释 Art Direction、来源、使用边界、组件行为和迭代规则。
 
 单个低风险页面、T3 微调或一次性概念稿默认只输出 UI Brief 与 Art Direction Card。
 
@@ -10,7 +10,7 @@
 
 - 多个页面需要保持同一视觉身份；
 - 后续由不同 Agent 或开发者实施；
-- 项目已有或准备建立 Design Tokens；
+- 项目已有或已明确决定建立 Design Tokens；
 - 用户明确要求持久设计规范；
 - World Replacement 需要记录迁移基线；
 - 后续预计持续新增 T1 / T2 / T3 迭代。
@@ -29,120 +29,9 @@
 
 ## 模板
 
-````markdown
----
-version: "0.3"
-name: "[Design system name]"
-status: draft | locked | evolving
-surfaceMode: persuade | operate | read | experience
-baselineEvidence: none | implementation | design-contract
-projectScenario: greenfield | world-replacement | extension | refinement
-selectedDirection: "[Direction capsule name]"
-expression: [1-10]
-motion: [1-10]
-density: [1-10]
-systemStrategy: existing | official | curated-scaffold | custom
-sourceOfTruth:
-  productBrief: "[path or TBD]"
-  uiBrief: "[path or TBD]"
-  visualAnchors: "[path or TBD]"
-  currentImplementation: "[path or TBD]"
-colors:
-  atmosphereBackground: "[CSS color]"
-  atmosphereSurface: "[CSS color]"
-  atmosphereMuted: "[CSS color]"
-  textPrimary: "[CSS color]"
-  textSecondary: "[CSS color]"
-  border: "[CSS color]"
-  actionPrimary: "[CSS color]"
-  onActionPrimary: "[CSS color]"
-  actionSecondary: "[CSS color or transparent]"
-  success: "[CSS color]"
-  warning: "[CSS color]"
-  error: "[CSS color]"
-  info: "[CSS color]"
-typography:
-  display:
-    fontFamily: "[Font family]"
-    fontSize: "[dimension or clamp]"
-    fontWeight: [number]
-    lineHeight: "[number or dimension]"
-    letterSpacing: "[dimension]"
-  heading:
-    fontFamily: "[Font family]"
-    fontSize: "[dimension]"
-    fontWeight: [number]
-    lineHeight: "[number or dimension]"
-  body:
-    fontFamily: "[Font family]"
-    fontSize: "[dimension]"
-    fontWeight: [number]
-    lineHeight: "[number or dimension]"
-    maxWidth: "[ch or dimension]"
-  label:
-    fontFamily: "[Font family]"
-    fontSize: "[dimension]"
-    fontWeight: [number]
-    lineHeight: "[number or dimension]"
-  data:
-    fontFamily: "[Font family]"
-    fontSize: "[dimension]"
-    fontWeight: [number]
-    lineHeight: "[number or dimension]"
-spacing:
-  xs: "[dimension]"
-  sm: "[dimension]"
-  md: "[dimension]"
-  lg: "[dimension]"
-  xl: "[dimension]"
-  section: "[dimension or clamp]"
-shape:
-  control: "[dimension]"
-  surface: "[dimension]"
-  overlay: "[dimension]"
-  pill: "9999px"
-depth:
-  surface: "[border / shadow / tonal rule]"
-  raised: "[shadow or token]"
-  overlay: "[shadow or token]"
-motionTokens:
-  instant: "[duration]"
-  quick: "[duration]"
-  standard: "[duration]"
-  slow: "[duration]"
-  easingStandard: "[easing]"
-  easingEnter: "[easing]"
-  easingExit: "[easing]"
-icons:
-  family: "[Icon family]"
-  strokeWidth: "[value]"
-  defaultSize: "[dimension]"
-  fillPolicy: "outline | filled | mixed-by-rule"
-breakpoints:
-  mobile: "[dimension]"
-  tablet: "[dimension]"
-  desktop: "[dimension]"
-  wide: "[dimension]"
-components:
-  buttonPrimary:
-    background: "{colors.actionPrimary}"
-    text: "{colors.onActionPrimary}"
-    typography: "{typography.label}"
-    radius: "{shape.control}"
-    padding: "[dimension]"
-  inputDefault:
-    background: "{colors.atmosphereSurface}"
-    text: "{colors.textPrimary}"
-    border: "{colors.border}"
-    radius: "{shape.control}"
-    padding: "[dimension]"
-  surfaceDefault:
-    background: "{colors.atmosphereSurface}"
-    text: "{colors.textPrimary}"
-    radius: "{shape.surface}"
-    depth: "{depth.surface}"
----
+项目已有或已明确决定建立可执行 Token 时，先读取 `design-token-template.md` 并将适用 frontmatter 放在以下正文之前；否则直接使用正文。
 
+````markdown
 # [Design system name]
 
 ## 0. Contract Status

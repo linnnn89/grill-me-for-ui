@@ -9,16 +9,14 @@ description: 通过一次一问的设计访谈与确定性路由，把模糊 UI 
 
 ## 不可违反的行为
 
-1. 一次只问一个会改变方案的高影响问题。
-2. 先检查代码、截图、设计稿、真实内容、现有 UI Brief / DESIGN.md 和已确认决定，再提问。
-3. 只询问必须由用户决定的产品优先级、品牌态度和主观边界；技术事实由 Agent 调查。
-4. 每题说明影响并给出有立场的推荐；先描述可观察效果，再使用术语。
-5. 先目标与内容，后 Art Direction；先方向与构图，后组件和细节。
-6. 用户未确认设计基线前，不大规模实施或改写设计文件。
-7. 使用真实内容和资产；不编造指标、客户、评价、奖项或品牌声明。
-8. 一个主导概念，最多两个支持母题。
-9. 用户可随时采用推荐、跳过、回退、结束访谈或缩小范围。
-10. 验证默认只有 Pass 1、一个 Fix batch 和 Pass 2；没有视觉证据时不声称通过。
+1. 一次只问一个会改变方案的高影响问题；先检查现有证据，只问必须由用户决定的取舍。
+2. 每题说明影响并给出有立场的推荐；先目标与内容，后 Art Direction、构图和细节。
+3. 用户未确认设计基线前，不大规模实施或改写设计文件。
+4. 使用真实内容和资产；不编造指标、客户、评价、奖项或品牌声明。
+5. 一个主导概念，最多两个支持母题。
+6. 用户可采用推荐、跳过、回退、结束访谈或缩小范围。
+7. 每阶段只加载一份首要 Playbook；输出阶段只按触发条件追加模板模块。
+8. 验证只有 Pass 1、一个 Fix batch 和 Pass 2；没有视觉证据时不声称通过。
 
 ## 0. Fast Exit
 
@@ -28,13 +26,7 @@ description: 通过一次一问的设计访谈与确定性路由，把模糊 UI 
 
 ## 1. 读取最小证据
 
-只检查当前表面和本次变更需要的资产：
-
-- 当前页面、组件、路由和主要状态；
-- 真实文案、数据、图像、图标和作品；
-- UI Brief、DESIGN.md、Token、组件库和主题；
-- 设备、平台、性能、无障碍与时间边界；
-- 当前对话已经确认的决定。
+只检查当前表面需要的页面、状态、真实内容、设计资产与已确认决定；增量任务优先读取相关 UI Brief、DESIGN.md、Token 和组件，不扫描整个仓库。
 
 不要因为缺少 DESIGN.md 就把已有产品当作 Greenfield。现有实现也可以构成设计基线。
 
@@ -99,7 +91,7 @@ Refinement 另选重写深度：
 |---|---|---|---|
 | 模糊需求或新方向 | shape / direct | `references/interview-map.md` | 共享理解、方向选择、UI Brief |
 | 风格词含糊或需要外部参考 | research | `references/aesthetic-research-protocol.md` | 2–3 个方向胶囊 |
-| 已有方向的页面或 Section 扩展 | shape | 旧契约 + `references/interview-map.md` | 局部 Brief 或增量计划 |
+| 已有方向的页面或 Section 扩展 | shape | `references/interview-map.md` | 局部 Brief 或增量计划 |
 | 现有 UI 诊断或精修 | critique / polish / targeted action | `references/iteration-and-refinement.md` | 诊断、重写深度、修改范围 |
 | 机械质量与生产边界 | audit / harden / adapt | `references/iteration-and-refinement.md` | 可验证问题或加固计划 |
 | 实施后证据确认 | verify | `references/visual-critique.md` | 两轮内的验证结论 |
@@ -107,74 +99,34 @@ Refinement 另选重写深度：
 
 `critique` 是设计判断，`audit` 是机械检查，`verify` 是实施后的证据确认。`polish` 适用于综合完成度；问题已经定位时，改用 bolder、quieter、distill、typeset、layout、colorize、animate、delight、harden 或 adapt。
 
-每阶段只加载表中一份首要参考。后续阶段可以换参考，但不要同时读取两个内容重叠的 Playbook。
+每阶段只加载表中一份首要 Playbook。现有项目证据和按触发条件追加的输出模板不算第二份 Playbook；后续阶段可以换参考，但不要同时读取两个内容重叠的 Playbook。
 
-## 4. 路径规则
+## 4. 路径护栏
 
-### Greenfield / World Replacement
-
-```text
-前轮：任务、用户、范围、保留项、反参考、内容资产和约束
-→ 必要时研究
-→ 2–3 个真正不同的方向胶囊
-→ 用户选择主方向
-→ 后轮：页面叙事、第一锚点、文案、视觉边界、状态和小屏
-→ UI Brief；满足生成条件时才追加 DESIGN.md
-```
-
-World Replacement 必须先锁定产品真相、保留行为、废弃范围、迁移风险和前后对照标准。
-
-### Extension
-
-先回放旧契约的主导概念、Token、组件、视觉锚点和允许偏离范围。
-
-- T1：轻量后轮 + 局部锚点；
-- T2：最小后轮 + 必要时一个草图；
-- T3：目标明确时直接实施 + 定向 Review。
-
-不要重新研究全站方向。
-
-### Refinement
-
-先声明核心失败、重写深度和一个主动作。方向正确时不重跑前轮；方向错误时停止精修，提议 World Replacement 并等待授权。
-
-### Verify
-
-只读取 `references/visual-critique.md`：
-
-```text
-Pass 1：桌面 + 移动 + 状态批量发现
-→ 一个 Fix batch
-→ Pass 2：确认 P0/P1、机械检查和回归
-→ 停止
-```
+- Greenfield / World Replacement 读取 `interview-map.md`；只有风格含糊或外部参考会改变方向时才进入 research。
+- World Replacement 先锁定产品真相、保留行为、废弃范围、迁移风险和前后对照标准。
+- Extension 先回放相关旧契约；T1/T2 只做局部访谈，T3 目标明确时直接实施，不重做全站研究。
+- Refinement 先声明核心失败、重写深度和一个主动作；方向错误时停止精修并请求 World Replacement 授权。
+- Verify 只读取 `visual-critique.md`，Pass 2 后停止。
 
 ## 5. 结束与交付
 
-当以下条件成立时结束当前阶段：
-
-- Surface、Scenario、范围和主动作明确；
-- 主要用户、任务、真实资产与成功结果明确；
-- 选定方向足以排除主要替代方案，或现有方向明确继续；
-- 剩余未知不会显著改变下一阶段；
-- 后续可以通过实现或有界验证继续收敛。
+Surface、Scenario、范围、主动作及成功结果明确，且剩余未知不会显著改变下一阶段时停止。高风险 Operate 还需锁定权限、失败与恢复；World Replacement 还需锁定迁移和回退边界。不要因为“还能继续提问”延长访谈。
 
 先给不超过 12 行的共享理解和最多 3 个非阻塞问题。用户确认后：
 
-- 使用 `references/ui-brief-template.md` 生成按范围裁剪的 UI Brief；
-- 仅多页面、设计系统、World Replacement、持续扩展或跨 Agent 项目使用 `references/design-md-template.md`；
+- 使用 `references/ui-brief-template.md` 生成核心 Brief；只有复杂流程、状态、技术或验证要求才追加 `references/ui-brief-implementation-module.md`；
+- 仅多页面、设计系统、World Replacement、持续扩展或跨 Agent 项目使用 `references/design-md-template.md`；项目已有或已明确决定建立可执行 Token 时才追加 `references/design-token-template.md`；
 - 只有用户继续要求时进入视觉稿、Figma、实现或代码。
+
+复杂任务同时满足多个条件时，按核心 Brief → Implementation Module → DESIGN.md → Token Module 顺序追加，不回载此前 Playbook。
 
 用户中途结束时生成部分 Brief，并标明未确认分支。
 
-## 按需参考
+## 仅在需要时追加
 
-- `references/design-intelligence-router.md`：场景边界、动作选择和疑难路由；
-- `references/interview-map.md`：前轮、方向选择、后轮和增量问题树；
-- `references/aesthetic-research-protocol.md`：风格消歧、七维研究和方向胶囊；
-- `references/iteration-and-refinement.md`：重写深度、定向精修和生产加固；
-- `references/taste-calibration.md`：Art Direction、构图语法和视觉系统；
-- `references/ui-brief-template.md`：按范围裁剪的 UI Brief；
-- `references/design-md-template.md`：可选长期设计契约；
-- `references/visual-critique.md`：实施后的唯一验证协议；
-- `references/ui-vocabulary.md`：仅在用户描述与 UI 术语存在歧义时读取。
+- `references/design-intelligence-router.md`：基础分类仍有歧义；
+- `references/taste-calibration.md`：需要完整 Art Direction、构图或视觉系统；
+- `references/ui-vocabulary.md`：用户描述与 UI 术语存在歧义；
+- `references/ui-brief-implementation-module.md`：复杂流程、组件状态、响应式、技术与验证；
+- `references/design-token-template.md`：项目已有或已明确决定建立可执行 Design Tokens。

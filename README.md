@@ -45,7 +45,9 @@ skills/grill-me-for-ui/
     ├── interview-map.md
     ├── taste-calibration.md
     ├── ui-brief-template.md
+    ├── ui-brief-implementation-module.md
     ├── design-md-template.md
+    ├── design-token-template.md
     ├── visual-critique.md
     └── ui-vocabulary.md
 
@@ -82,6 +84,8 @@ Full structural rebuild 可以重建结构和实现，但仍保留视觉身份�
 ### 3. 每阶段只加载一个相关 Playbook
 
 主 Skill 负责路由，不把所有风格、配色、组件和动效目录常驻上下文。大型知识库按查询使用，减少首次输入和 Token 消耗。
+
+UI Brief 默认只加载方向与决策核心；复杂流程、状态、响应式或正式验证才追加 Implementation Module。DESIGN.md 默认只加载长期契约正文；项目已有或已明确决定建立可执行 Design Tokens 时才追加 Token Module。
 
 ### 4. 有界验证
 
