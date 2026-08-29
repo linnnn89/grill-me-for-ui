@@ -26,4 +26,4 @@ Publication:
 - Backed up the installed skill to `C:\Users\40218\.codex\skill-backups\grill-me-for-ui-20260830T010028+0800`.
 - Synchronized all 17 repository skill files to the installed copy; SHA-256 comparison found no mismatches.
 - Preserved the local-only `agents/openai.yaml` opt-in policy file.
-- Pending commit, pull request, and merge.
+- Published and squash-merged through pull request #6. The resulting main-branch commit is `1de61f4d6407151506b0be51a2ea5f86bb847610`.
