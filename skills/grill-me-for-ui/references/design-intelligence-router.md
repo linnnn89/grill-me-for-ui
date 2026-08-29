@@ -1,6 +1,6 @@
 # Design Intelligence Router
 
-仅在主 Skill 的基础分类仍有歧义时读取本文件。它只负责确定 Surface、Baseline、Scenario、Scope、Depth / Action 和下一阶段；不包含访谈、研究或设计系统手册。
+仅在主 Skill 的基础分类仍有歧义时读取本文件。它只负责确定 Surface、Baseline、Scenario、Scope、Depth / Action、下一主阶段，以及是否需要先插入 Interaction / IA 条件阶段；不包含访谈、研究或设计系统手册。
 
 ## 一、先判断表面模式，而不是产品类别
 
@@ -88,8 +88,8 @@
 
 | 家族 | 动作 | 使用时机 | 首要参考 | 结束结果 |
 |---|---|---|---|---|
-| 定义 | **shape / direct** | 在代码前澄清产品、流程或艺术指导 | 对象、动作、导航或状态不清时用 `interaction-and-information-architecture.md`；Greenfield / World Replacement 用 `interview-map.md`；Extension 用 `core-cheatsheet.md` | 共享理解、Interaction / IA Card、方向或 UI Brief |
-| 研究 | **research** | 外部证据会改变交互模式或审美方向 | 交互模式证据回到 `interaction-and-information-architecture.md`；风格与文化语义用 `aesthetic-research-protocol.md` | 可解释的模式选择或 2–3 个方向胶囊 |
+| 定义 | **shape / direct** | 在代码前澄清产品、流程或艺术指导 | Greenfield / World Replacement 的主阶段用 `interview-map.md`；Extension 用 `core-cheatsheet.md`；若对象、动作、导航或关键状态仍会改变方案，先插入 `interaction-and-information-architecture.md`，完成后返回原主阶段 | 共享理解、Interaction / IA Card、方向或 UI Brief |
+| 研究 | **research** | 外部证据会改变交互模式或审美方向 | Interaction / IA 已激活时，交互模式研究使用该文件第 7 节并返回 IA；风格与文化语义用 `aesthetic-research-protocol.md` | 可解释的模式选择或 2–3 个方向胶囊 |
 | 沉淀 | **document** | 从现有实现提炼长期设计规则 | `design-md-template.md` | 可选 DESIGN.md |
 | 诊断 | **critique** | 判断“为什么不对” | 常规定位用 `core-cheatsheet.md`；结构性诊断用 `iteration-and-refinement.md` | 设计判断与重写深度 |
 | 检查 | **audit** | 检查可访问性、响应式、性能与机械错误 | `iteration-and-refinement.md` | 可验证问题清单 |
@@ -102,7 +102,9 @@
 
 一次迭代只设一个主动作，最多附带一个支持动作，例如 `layout + quieter`。每阶段只读取表中一份首要参考；后续阶段可以换参考，但不要同时加载内容重叠的 Playbook。
 
-Visual Probe 不是新动作。它是在结构、交互或方向仍难以通过文字选择时使用的最小证据阶段；读取 `visual-probes.md` 后回到原主动作。
+Interaction / IA 是条件阶段，不是与 `interview-map.md` 或 `core-cheatsheet.md` 平级竞争的第二个主阶段。进入前记录直接调用阶段；完成紧凑 Card 后立即返回该阶段，不同时加载两份候选主 Playbook。
+
+Visual Probe 不是新动作。它只在尚未结束的设计决定无法通过文字选择时临时提供最小可视证据；读取 `visual-probes.md` 后回到直接调用阶段，并只携带选定决定、被排除方向和必要风险。`verify`、`audit`、`document` 与交付模板不得调用 Probe；若验证暴露新的设计分岔，结束验证后重新路由。
 
 ## 四、完成 Trace
 
@@ -113,6 +115,7 @@ Visual Probe 不是新动作。它是在结构、交互或方向仍难以通过�
 - Scenario 按 Greenfield → World Replacement → Extension → Refinement 优先级成立；
 - Scope / Tier 或 Refinement depth 明确；
 - 一个主动作和最多一个支持动作不冲突；
-- 下一阶段 Playbook 与停止条件明确。
+- 下一主阶段 Playbook 与停止条件明确；
+- 若需要 Interaction / IA 或 Visual Probe，直接调用阶段、返回点和紧凑写回位置明确。
 
 需要用户决定时，将对应字段标为 `USER_DECISION_REQUIRED`，不得读取任何下游 reference；只问一个能够区分分类的问题并结束本轮。证据已经充分时，输出 Trace 后进入下一内部阶段；不要再次解释访谈、研究或设计系统知识。

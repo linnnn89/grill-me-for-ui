@@ -35,6 +35,12 @@ Depth / Action：[适用时重写深度；一个主动作 + 最多一个支持�
 Reference / Stop：[本轮唯一 Playbook；停止条件]
 ```
 
+仅当进入 Interaction / IA 或 Visual Probe 时，追加一行阶段契约：
+
+```text
+Stage Contract：[直接调用阶段 → 临时阶段 → 返回直接调用阶段；紧凑产物写回位置]
+```
+
 先检查当前表面、真实内容、实现、Token、组件和已确认决定。缺少 DESIGN.md 不等于 Greenfield。无法用一句证据说明分类时，本阶段只读取 `references/design-intelligence-router.md`，先解决 Trace，再进入下游阶段。
 
 “阶段”是内部工作状态，不强制等于一次对话轮次：证据足以分类时可以在同一轮进入下一阶段；需要用户决定时只问一个分类问题并结束本轮。Trace 未解决前禁止预载下游 Playbook。
@@ -43,30 +49,42 @@ Reference / Stop：[本轮唯一 Playbook；停止条件]
 
 ## Token Discipline
 
-- 默认只加载本文件和一份首要 Playbook；项目证据不算 Playbook。
+- 默认只加载本文件和当前阶段的一份工作参考；项目证据不算 Playbook。主阶段、Interaction / IA 条件阶段和 Visual Probe 证据插入在任一时刻只激活一个，不为下一阶段预载文件。
 - Extension T1/T2 与多数 Refinement 优先 `references/core-cheatsheet.md`。
 - 禁止同一阶段加载两个内容重叠的 Playbook；输出模板只在交付时按条件追加。
 - `*-deep.md` 是升级附录，只能在轻量检查命中其触发条件后追加，禁止预载。
-- 分类是独立阶段；读取 Router 后不得在同一阶段预载 Interview、Research 或 Critique。
+- 分类是独立阶段；读取 Router 后不得在同一阶段预载 Interview、Interaction / IA、Research、Probe 或 Critique。
+- Interaction / IA 或 Probe 结束后，后续阶段只沿用紧凑 Card 或决定记录，不复制完整探索过程，也不为恢复上下文重新加载已经结束的参考。
 - 上下文已经很长时，缩小非关键证据、问题预算和输出，不以多加载文件补偿不确定性；不得跳过真实性、权限、失败恢复、安全或已确认约束。
 - `examples/` 只供人类阅读与离线评估，运行时禁止加载。
 
-## 最小路由
+## 主阶段最小路由
 
 | 当前需要 | 首要 Playbook | 最小结果 |
 |---|---|---|
 | 分类或边界仍有歧义 | `references/design-intelligence-router.md` | 可解释的 Trace |
-| Operate、多页面或结构性任务的对象、动作、导航、权限或状态仍不清楚 | `references/interaction-and-information-architecture.md` | Interaction / IA Card |
 | Greenfield / World Replacement | `references/interview-map.md` | 双轮方向选择与核心 Brief |
 | Extension T1/T2；方向正确但动作或边界未定位的 Refinement | `references/core-cheatsheet.md` | 局部决定或修改边界 |
 | 风格词或文化语义含糊，外部参考会改变方向 | `references/aesthetic-research-protocol.md` | 2–3 个方向胶囊 |
-| 文字不足以比较结构、交互或视觉方向 | `references/visual-probes.md` | 解决一个未决选择的最小可视证据 |
 | 完整 Art Direction 或构图系统 | `references/taste-calibration.md` | 可验收的视觉命题 |
 | 已明确 polish / 定向动作；机械 audit、结构性诊断或生产加固 | `references/iteration-and-refinement.md` | 深度、动作和修复批次 |
 | 实施后视觉与交互证据确认 | `references/visual-critique.md` | 两轮内的视觉结论与适用的任务走查 |
 | 从实现提炼长期契约 | `references/design-md-template.md` | 可选 DESIGN.md |
 
 动作只选一个主项：shape、research、critique、audit、polish、bolder、quieter、distill、typeset、layout、colorize、animate、delight、harden、adapt、verify 或 document。
+
+## 条件阶段、证据、验证与交付
+
+这些机制不与主阶段争夺首要路由：
+
+| 类型 | 进入条件 | 参考或位置 | 退出、返回与写回 |
+|---|---|---|---|
+| Interaction / IA 条件阶段 | Operate、多页面或结构性任务中，对象、动作、导航、权限、关键状态或任务连续性仍会改变方案 | `references/interaction-and-information-architecture.md` | 核心结构足以排除主要替代方案时停止；写回紧凑 Interaction / IA Card，返回直接调用的设计阶段 |
+| Visual Probe 证据插入 | 尚未结束的设计决策无法仅靠文字比较，且差异可以被看见 | `references/visual-probes.md` | 用户能选择或排除方案时停止；只写回选定决定、被排除方向和必要风险，返回直接调用的设计阶段 |
+| Task Walkthrough 验证子步骤 | `verify` 面向 Operate、多步骤流程或已把任务连续性列为验收标准 | `references/visual-critique.md` 第 4 节 | 发现写入 Visual Critique；不在 Verify 内重新开启设计探索 |
+| 持久交付模板 | 已确认决定需要跨时间、跨 Agent 或跨实现阶段交接 | 本文件“停止与交付”中的条件模板 | 只承接已确认决定，不在填模板时产生新的设计范围或方向 |
+
+Visual Probe 只服务仍在进行的结构、交互或视觉方向选择；不得从 `verify`、`audit`、`document` 或交付模板阶段直接调用。验证发现新的设计分岔时，如实报告未解决决定，并在当前验证结束后重新路由设计阶段。
 
 ## 路径护栏
 
@@ -75,9 +93,9 @@ Reference / Stop：[本轮唯一 Playbook；停止条件]
 - World Replacement 必须有放弃旧视觉身份的明确授权，并锁定保留行为、迁移和回退边界。
 - Extension 沿用相关旧契约；T1/T2 最多问 1–3 个当前表面问题，T3 目标明确时 Fast Exit。
 - Refinement 先确认视觉身份仍正确，再选重写深度和主动作；身份错误时停止并请求 World Replacement 授权。
-- Operate、多页面产品或 Medium / Full structural 任务若仍缺对象—动作模型、导航原则或关键状态转换，先完成 Interaction / IA 阶段，再进入 Art Direction 或构图。
-- 方向胶囊已能支持选择时直接继续；只有文字仍无法呈现关键差异时才使用 Visual Probe，并只解决一个未决决定。
-- Verify 覆盖视觉、机械 UI 与适用的用户可见任务连续性；权限执行、数据写入和真实恢复行为需要独立功能证据。
+- Operate、多页面产品或 Medium / Full structural 任务若仍缺对象—动作模型、导航原则或关键状态转换，先完成 Interaction / IA 条件阶段，再返回直接调用的 Art Direction、局部决策或构图阶段。
+- 文字已经能支持选择时直接继续；只有一个仍未决的结构、交互或视觉差异必须被看见时才插入 Visual Probe，完成后回到直接调用阶段。
+- Verify 覆盖视觉、机械 UI 与适用的用户可见任务连续性；它不调用 Probe 或改写设计方向。权限执行、数据写入和真实恢复行为需要独立功能证据。
 
 ## 停止与交付
 
@@ -91,6 +109,8 @@ Surface、Scenario、范围、主动作和成功结果明确，剩余未知不�
 - 已生成核心 Brief，且存在复杂流程、状态、响应式、技术或正式验证：追加 `references/ui-brief-implementation-module.md`；
 - 多页面、设计系统、World Replacement、持续扩展或跨 Agent：追加 `references/design-md-template.md`；
 - 已生成 DESIGN.md，且已有或已明确决定建立可执行 Token：追加 `references/design-token-template.md`。
+
+模板只提炼已经确认的 Card、Brief 和决定记录。填模板时若暴露新的对象模型、方向或范围分岔，停止交付并重新路由相应设计阶段；不要在模板内静默补完。
 
 只有用户继续要求时进入视觉稿、Figma、实现或代码。用户中途结束时输出部分 Brief，并标明未确认分支。
 
