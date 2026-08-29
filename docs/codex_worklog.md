@@ -27,3 +27,26 @@ Publication:
 - Synchronized all 17 repository skill files to the installed copy; SHA-256 comparison found no mismatches.
 - Preserved the local-only `agents/openai.yaml` opt-in policy file.
 - Published and squash-merged through pull request #6. The resulting main-branch commit is `1de61f4d6407151506b0be51a2ea5f86bb847610`.
+
+## 2026-08-30 — Routing lifecycle consolidation
+
+Goal: resolve lifecycle ambiguity introduced by Interaction / IA and Visual Probe while preserving the existing architecture and action taxonomy.
+
+Changes:
+
+- separated main design stages from the Interaction / IA conditional stage, Visual Probe evidence insertion, Task Walkthrough verification substep, and persistent delivery templates;
+- added a stage contract that records the direct caller, return point, and compact write-back location for Interaction / IA and Visual Probe;
+- constrained Visual Probe to unresolved design decisions and excluded direct calls from verify, audit, document, and delivery;
+- limited cross-stage carry-over to compact Cards and decision records instead of full exploration histories or reloaded completed references;
+- updated the medical research Dashboard example to route through object, action, context, permission, state, and recovery questions before choosing Tabs, Drawer, or other component forms.
+
+Scope decisions:
+
+- did not add a new Playbook, action, code or static-audit path, Design-to-Code path, or compressed master template;
+- did not change the installed skill copy; GitHub publication and merge were authorized after the local iteration review;
+- did not run model, prompt-behavior, forward, or wording-match tests, following the user's instruction.
+
+Review:
+
+- reviewed the Markdown diff for routing consistency, return paths, and scope boundaries;
+- recorded installed-copy synchronization as not performed; GitHub publication details are reported in the task handoff.
