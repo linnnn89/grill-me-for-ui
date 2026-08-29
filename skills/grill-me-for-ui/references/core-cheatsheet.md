@@ -22,7 +22,7 @@ Extension 默认只问 1–3 个当前表面问题，不重新研究全站。Ref
 
 Refinement 深度：Light 只调层级、排版与细节；Medium 可重组布局和组件层级；Full structural 可重建结构与实现，但三者都必须保留现有视觉身份。
 
-高风险 Operate 还要锁定角色权限、失败与恢复；若这些会改变产品范围，停止轻量路径，下一阶段再进入 `interview-map.md`。
+Operate、多页面产品或 Medium / Full structural 任务若仍缺核心对象、动作、导航、权限或状态转换，停止轻量路径，下一阶段读取 `interaction-and-information-architecture.md`。高风险 Operate 还要锁定角色权限、失败与恢复；若这些会改变产品范围，再进入 `interview-map.md` 处理用户决定。
 
 ## 动作速选
 
@@ -79,6 +79,7 @@ Refinement 深度：Light 只调层级、排版与细节；Medium 可重组布�
 满足以下条件即交付局部决定或修改边界：
 
 - 当前任务、范围、保留项和非目标明确；
+- 适用时，Interaction / IA Card 已明确对象、动作、导航和关键状态；
 - Art Direction 继续成立；
 - 主动作及预期效果明确；
 - 剩余问题可在实现或一次定向 Review 中解决。

@@ -1,6 +1,6 @@
 ---
 name: grill-me-for-ui
-description: 通过一次一问的设计访谈与确定性路由，把模糊 UI 需求、页面重设计、参考图或现有界面反馈收敛为 Art Direction、UI Brief、增量计划或视觉评审。用于“grill me for UI”“先访谈再设计”、新方向、视觉世界替换、增量扩展、现有 UI 精修、审美研究或实施后验证仍有重要设计取舍的场景。不要用于需求完整的单点样式修改、纯代码 Bug，或执行已经确认的实现计划。
+description: 通过一次一问的设计访谈与确定性路由，把模糊 UI 需求、页面重设计、参考图或现有界面反馈收敛为 Interaction / IA Card、Art Direction、UI Brief、增量计划或实施后评审。用于“grill me for UI”“先访谈再设计”、复杂交互结构、新方向、视觉世界替换、增量扩展、现有 UI 精修、审美研究或实施后验证仍有重要设计取舍的场景。不要用于需求完整的单点样式修改、纯代码 Bug，或执行已经确认的实现计划。
 ---
 
 # Grill Me for UI
@@ -16,6 +16,7 @@ description: 通过一次一问的设计访谈与确定性路由，把模糊 UI 
 5. 一个主导概念，最多两个支持母题。
 6. 用户可采用推荐、跳过、回退、结束访谈或缩小范围。
 7. 验证只有 Pass 1、一个 Fix batch 和 Pass 2；没有视觉证据时不声称通过。
+8. 复杂 Operate、多页面产品或结构性重写中，对象、动作、导航或状态仍会改变方案时，先解决交互结构，再锁定视觉方向。
 
 ## Fast Exit
 
@@ -55,12 +56,14 @@ Reference / Stop：[本轮唯一 Playbook；停止条件]
 | 当前需要 | 首要 Playbook | 最小结果 |
 |---|---|---|
 | 分类或边界仍有歧义 | `references/design-intelligence-router.md` | 可解释的 Trace |
+| Operate、多页面或结构性任务的对象、动作、导航、权限或状态仍不清楚 | `references/interaction-and-information-architecture.md` | Interaction / IA Card |
 | Greenfield / World Replacement | `references/interview-map.md` | 双轮方向选择与核心 Brief |
 | Extension T1/T2；方向正确但动作或边界未定位的 Refinement | `references/core-cheatsheet.md` | 局部决定或修改边界 |
 | 风格词或文化语义含糊，外部参考会改变方向 | `references/aesthetic-research-protocol.md` | 2–3 个方向胶囊 |
+| 文字不足以比较结构、交互或视觉方向 | `references/visual-probes.md` | 解决一个未决选择的最小可视证据 |
 | 完整 Art Direction 或构图系统 | `references/taste-calibration.md` | 可验收的视觉命题 |
 | 已明确 polish / 定向动作；机械 audit、结构性诊断或生产加固 | `references/iteration-and-refinement.md` | 深度、动作和修复批次 |
-| 实施后视觉证据确认 | `references/visual-critique.md` | 两轮内的验证结论 |
+| 实施后视觉与交互证据确认 | `references/visual-critique.md` | 两轮内的视觉结论与适用的任务走查 |
 | 从实现提炼长期契约 | `references/design-md-template.md` | 可选 DESIGN.md |
 
 动作只选一个主项：shape、research、critique、audit、polish、bolder、quieter、distill、typeset、layout、colorize、animate、delight、harden、adapt、verify 或 document。
@@ -72,7 +75,9 @@ Reference / Stop：[本轮唯一 Playbook；停止条件]
 - World Replacement 必须有放弃旧视觉身份的明确授权，并锁定保留行为、迁移和回退边界。
 - Extension 沿用相关旧契约；T1/T2 最多问 1–3 个当前表面问题，T3 目标明确时 Fast Exit。
 - Refinement 先确认视觉身份仍正确，再选重写深度和主动作；身份错误时停止并请求 World Replacement 授权。
-- Verify 只做视觉与机械 UI 验证；权限、数据和恢复行为需要独立功能证据。
+- Operate、多页面产品或 Medium / Full structural 任务若仍缺对象—动作模型、导航原则或关键状态转换，先完成 Interaction / IA 阶段，再进入 Art Direction 或构图。
+- 方向胶囊已能支持选择时直接继续；只有文字仍无法呈现关键差异时才使用 Visual Probe，并只解决一个未决决定。
+- Verify 覆盖视觉、机械 UI 与适用的用户可见任务连续性；权限执行、数据写入和真实恢复行为需要独立功能证据。
 
 ## 停止与交付
 

@@ -88,8 +88,8 @@
 
 | 家族 | 动作 | 使用时机 | 首要参考 | 结束结果 |
 |---|---|---|---|---|
-| 定义 | **shape / direct** | 在代码前澄清产品、流程或艺术指导 | Greenfield / World Replacement 用 `interview-map.md`；Extension 用 `core-cheatsheet.md` | 共享理解、方向或 UI Brief |
-| 研究 | **research** | 风格词含糊，需要外部参考和文化语义 | `aesthetic-research-protocol.md` | 2–3 个方向胶囊 |
+| 定义 | **shape / direct** | 在代码前澄清产品、流程或艺术指导 | 对象、动作、导航或状态不清时用 `interaction-and-information-architecture.md`；Greenfield / World Replacement 用 `interview-map.md`；Extension 用 `core-cheatsheet.md` | 共享理解、Interaction / IA Card、方向或 UI Brief |
+| 研究 | **research** | 外部证据会改变交互模式或审美方向 | 交互模式证据回到 `interaction-and-information-architecture.md`；风格与文化语义用 `aesthetic-research-protocol.md` | 可解释的模式选择或 2–3 个方向胶囊 |
 | 沉淀 | **document** | 从现有实现提炼长期设计规则 | `design-md-template.md` | 可选 DESIGN.md |
 | 诊断 | **critique** | 判断“为什么不对” | 常规定位用 `core-cheatsheet.md`；结构性诊断用 `iteration-and-refinement.md` | 设计判断与重写深度 |
 | 检查 | **audit** | 检查可访问性、响应式、性能与机械错误 | `iteration-and-refinement.md` | 可验证问题清单 |
@@ -101,6 +101,8 @@
 `critique` 是专业设计判断，`audit` 是机械与生产检查，`verify` 是实施后的证据确认。不要互换。
 
 一次迭代只设一个主动作，最多附带一个支持动作，例如 `layout + quieter`。每阶段只读取表中一份首要参考；后续阶段可以换参考，但不要同时加载内容重叠的 Playbook。
+
+Visual Probe 不是新动作。它是在结构、交互或方向仍难以通过文字选择时使用的最小证据阶段；读取 `visual-probes.md` 后回到原主动作。
 
 ## 四、完成 Trace
 

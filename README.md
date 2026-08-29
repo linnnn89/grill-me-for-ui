@@ -14,13 +14,17 @@ Most UI agents jump from an underspecified request to code. **Grill Me for UI** 
 
 - identify the current surface, project scenario, change tier, and refinement depth;
 - determine whether the task needs shape, research, critique, polish, layout, hardening, or another focused capability;
+- resolve objects, actions, navigation, permissions, and material state transitions before visual styling when the product structure is still uncertain;
 - ask one high-impact question at a time, with a recommendation and a clear stop condition;
+- use the smallest useful visual probe when words alone cannot resolve a structural, interaction, or Art Direction choice;
 - produce a UI Brief, an incremental plan, or an optional `DESIGN.md` when the scope justifies it;
 - validate with one discovery pass, one fix batch, and one confirmation pass.
 
 - 判断当前表面、项目场景、变更 Tier 和精修深度；
 - 判断任务需要 shape、research、critique、polish、layout、harden 等哪一种能力；
+- 在产品结构仍不明确时，先解决对象、动作、导航、权限和关键状态转换；
 - 一次只问一个高影响问题，同时给出推荐和停止条件；
+- 当文字不足以比较结构、交互或视觉方向时，使用最小可用的 Visual Probe；
 - 按范围生成 UI Brief、增量计划，或可选的 `DESIGN.md`；
 - 通过一次发现、一次修复和一次确认完成有限验证。
 
@@ -84,8 +88,10 @@ Then it selects one primary action, such as `shape`, `research`, `critique`, `po
 ```text
 Greenfield / World Replacement
   → first-round interview
+  → interaction and IA when product structure is consequentially unclear
   → research only when it can change the direction
   → 2–3 genuinely different direction capsules
+  → visual probe only when words are insufficient for selection
   → second-round detail interview
 
 Extension T1/T2 or most Refinement
@@ -97,16 +103,17 @@ Explicit polish, targeted action, audit, hardening, or adaptation
 
 Implemented UI with visual evidence
   → bounded visual critique
+  → task walkthrough for complex Operate or multi-step flows
 ```
 
 ```text
-Greenfield / World Replacement：完整双轮访谈，必要时研究，再进入方向胶囊和细节确认。
+Greenfield / World Replacement：完整双轮访谈；产品结构仍不清楚时先完成 Interaction / IA，必要时研究，再进入方向胶囊和细节确认。
 
 Extension T1/T2 或多数 Refinement：优先使用轻量 Cheatsheet，形成局部决定或修改边界。
 
 已明确的 polish、定向动作、audit、harden 或 adapt：进入迭代与精修 Playbook。
 
-已有实现且需要视觉证据：进入有界 Visual Critique。
+已有实现且需要视觉证据：进入有界 Visual Critique；复杂 Operate 或多步骤流程按需追加 Task Walkthrough。
 ```
 
 ## Why the interview is two-round / 为什么是双轮访谈
@@ -154,8 +161,10 @@ This keeps the high-frequency Extension and Refinement paths short while preserv
 | [`SKILL.md`](skills/grill-me-for-ui/SKILL.md) | Main router, stop rules, loading discipline / 主路由、停止规则和加载纪律 |
 | [`design-intelligence-router.md`](skills/grill-me-for-ui/references/design-intelligence-router.md) | Surface, scenario, tier, and boundary definitions / 分类与边界定义 |
 | [`core-cheatsheet.md`](skills/grill-me-for-ui/references/core-cheatsheet.md) | Lightweight Extension and Refinement diagnosis / 轻量增量与精修诊断 |
+| [`interaction-and-information-architecture.md`](skills/grill-me-for-ui/references/interaction-and-information-architecture.md) | Objects, actions, navigation, state transitions, and continuity / 对象、动作、导航、状态转换与上下文连续性 |
 | [`interview-map.md`](skills/grill-me-for-ui/references/interview-map.md) | Two-round interview and direction capsules / 双轮访谈与方向胶囊 |
 | [`aesthetic-research-protocol.md`](skills/grill-me-for-ui/references/aesthetic-research-protocol.md) | Style disambiguation and reference analysis / 风格消歧与参考分析 |
+| [`visual-probes.md`](skills/grill-me-for-ui/references/visual-probes.md) | Lowest-useful-fidelity decision evidence / 最低有效保真度的视觉决策证据 |
 | [`taste-calibration.md`](skills/grill-me-for-ui/references/taste-calibration.md) | Art Direction Card and visual system decisions / Art Direction Card 与视觉系统决策 |
 | [`iteration-and-refinement.md`](skills/grill-me-for-ui/references/iteration-and-refinement.md) | Targeted actions, diagnosis, and bounded iteration / 定向动作、诊断和有界迭代 |
 | [`visual-critique.md`](skills/grill-me-for-ui/references/visual-critique.md) | Mechanical checks and design judgment / 机械检查与设计判断 |
@@ -214,6 +223,8 @@ Depending on scope, the skill can produce:
 - a shared-understanding trace and assumptions / 共享理解摘要与假设；
 - an interview record and direction capsules / 访谈记录与方向胶囊；
 - an Art Direction Card and seven-dimension visual system / Art Direction Card 与七维视觉系统；
+- an Interaction / IA Card and material state-transition model / Interaction / IA Card 与关键状态转换模型；
+- a minimal visual probe when text cannot resolve a choice / 文字不足以完成选择时的最小视觉探针；
 - a page narrative, component, state, responsive, and accessibility plan / 页面叙事、组件、状态、响应式和可访问性计划；
 - a UI Brief or incremental implementation plan / UI Brief 或增量实施计划；
 - an optional `DESIGN.md` long-term contract / 可选的 `DESIGN.md` 长期契约；
@@ -235,13 +246,14 @@ Methodological influences and boundaries are documented in [`ATTRIBUTION.md`](AT
 
 ## Project status / 项目状态
 
-Current release line: **v0.4 — token-efficient Design Intelligence Router**.
+Current release line: **v0.5 — interaction structure and visual-evidence bridge**.
 
-当前版本线：**v0.4 — Token 高效的 Design Intelligence Router**。
+当前版本线：**v0.5 — 交互结构与视觉证据桥梁**。
 
 - v0.2: Art Direction, composition grammar, visual critique, and basic UI Brief / Art Direction、构图语法、视觉 Critique 与基础 UI Brief；
 - v0.3: router taxonomy, two-round interviews, direction capsules, refinement actions, and bounded verification / 路由分类、双轮访谈、方向胶囊、精修动作与有界验证；
 - v0.4: slim main router, lightweight cheatsheet, and on-demand deep references / 精简主路由、轻量 Cheatsheet 与按需 deep 参考文件。
+- v0.5: interaction and information architecture, minimum-fidelity visual probes, richer state handoff, and task walkthroughs / 交互与信息架构、最低有效保真度视觉探针、更完整的状态交接与任务走查。
 
 ## License / 许可证
 
